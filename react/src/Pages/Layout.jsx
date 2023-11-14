@@ -25,7 +25,7 @@ function Layout(){
                             <Link to="/contact" className="nav-link text-light" href="#">Contact</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/services" className="nav-link text-light" href="#">Book</Link>
+                            <Link to="/book" className="nav-link text-light" href="#">Book</Link>
                         </li>
                     
                     </ul>
