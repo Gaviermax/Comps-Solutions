@@ -46,28 +46,27 @@ function Home(){
 
             <div className="container-fluid bg-light">
                 <div className="container d-flex flew-col bg-light">
-                    <div className="left container">
+                    <div className="left container m-5 py-4">
                         <p>Quality</p>
-                        <h2>Find the Perfect Computer Parts for Your Needs</h2>
+                        <h2 className="py-3 fw-bold" style={{maxWidth:'20ch', fontSize: '3em'}}>Find the Perfect Computer Parts for Your Needs</h2>
                         <p style={{maxWidth: "55ch"}}>At our store, we offer a wide range of high-quality computer parts to meet your needs. Whether you're building a new PC or upgrading your current setup, we have the components you need to enhance your computing experience.</p>
-                        <ul>
-                            <li>Fast and Reliable Shipping</li>
-                            <li>Competitive Prices for Top Brands</li>
-                            <li>Knowledgeable Customer Support for Hassle-Free Shopping</li>
+                        <ul className="py-4">
+                            <li className="py-2">Fast and Reliable Shipping</li>
+                            <li className="py-2">Competitive Prices for Top Brands</li>
+                            <li className="py-2">Knowledgeable Customer Support for Hassle-Free Shopping</li>
                         </ul>
-                        <Link href="#" className="btn btn-danger">Shop</Link>
+                        <Link href="#" className="btn btn-danger">Shop Now</Link>
                         <button className="btn btn-outline-light  fw-medium me-4 rounded-0" type="button">Learn More</button>
                     </div>
-                    <div className="right">
+                    <div className="right d-flex justify-content-center align-items-center bg-success">
                         <h1 className="100">image</h1>
-                        <img className="width-100" src="" alt="" />
+                        <img className="" src="" alt="" />
                     </div>
                 </div>
             </div>
 
             <div className="container">
                 <div className="left">  
-                    <img src="" alt="" />
 
                 </div>
                 <div className="right">

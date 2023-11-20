@@ -10,6 +10,7 @@ import "./App.css";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
+import SignUp from "./Pages/SignUp";
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
               <Route path="book" element={<Book />}></Route>
               <Route path="*" element={<Error />}></Route>
             </Route>
+              <Route path="signup" element={<SignUp/>}></Route>
           </Routes>
         </BrowserRouter>
     </>

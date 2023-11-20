@@ -5,7 +5,7 @@ function Layout(){
     return(
         <>
              <nav className="navbar navbar-expand-lg bg-danger shadow sticky-top">
-                <div className="container">
+                <div className="container-fluid">
 
                     <Link to="/" className="navbar-brand fw-bold text-light">COMPS</Link>
                     {/* burger menu for mobile view */}
@@ -37,8 +37,8 @@ function Layout(){
                             <Link to="/services" className="nav-link text-light" href="#">🛒🛍️</Link> {/*temp pani, will find image */}
                         </li>
                     </ul>
-                    <button className="btn btn-outline-light  fw-medium me-4 rounded-0" type="button">Sign Up</button>
-                    <button className="btn btn-light text-danger me-5 fw-medium rounded-0" type="button">Log In</button>
+                    <Link to="/signup"><button className="btn btn-outline-light  fw-medium me-4 rounded-0" type="button">Sign Up</button></Link>
+                    <Link><button className="btn btn-light text-danger me-5 fw-medium rounded-0" type="button">Log In</button></Link>
                 </form>
                 </div>
             </div>
