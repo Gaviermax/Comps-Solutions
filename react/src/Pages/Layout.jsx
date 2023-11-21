@@ -38,7 +38,7 @@ function Layout(){
                         </li>
                     </ul>
                     <Link to="/signup"><button className="btn btn-outline-light  fw-medium me-4 rounded-0" type="button">Sign Up</button></Link>
-                    <Link><button className="btn btn-light text-danger me-5 fw-medium rounded-0" type="button">Log In</button></Link>
+                    <Link to="/login"><button className="btn btn-light text-danger me-5 fw-medium rounded-0" type="button">Log In</button></Link>
                 </form>
                 </div>
             </div>
