@@ -6,10 +6,10 @@ export default function SignUp(){
             <div className="container-fluid d-flex align-items-center justify-content-center bg-black" style={{minHeight: "100vh"}}>
                 <div className="container d-flex align-items-center justify-evenly shadow rounded px-5 pb-5 text-white">
                     <div className="form p-3" style={{width:'100%'}}>
-                        <h2 className="mb-5" style={{color:'#555FFF'}}>Comp<span className="text-white">Solution</span></h2>
+                        <h2 className="mb-5 fw-bold" style={{color:'#555FFF'}}>Comp<span className="text-white">Solution</span></h2>
                         <h1>Create an Account</h1>
                         <p>Already have an account? <Link to='/login'><span className="fw-bold" style={{textDecoration:'underline', cursor:'pointer',color:'#555FFF'}}>Sign In</span></Link></p>
-                        <div className="container card bg-white text-black my-5">
+                        <div className="container card bg-white text-black my-5 rounded-5">
                             <form className="card-body" action="">
                             <div class="row g-4 align-items-center mb-4 mt-1">
                                 <div class="col-6">
