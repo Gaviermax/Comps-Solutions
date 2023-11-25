@@ -1,6 +1,9 @@
 .btn-outline-light:hover{
-    color: #DC3545 !important;
+    color: #000000 !important;
     /* color: black !important; */
+}
+.btn-outline-light{
+    outline-color: #555FFF !important;
 }
 .nav-item:hover{
     border-bottom: 3px solid white;
