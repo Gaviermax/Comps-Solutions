@@ -6,5 +6,12 @@
     outline-color: #555FFF !important;
 }
 .nav-item:hover{
-    border-bottom: 3px solid white;
+    border-bottom: 4px solid #555FFF;
 }
+
+.quality{
+    background: -webkit-linear-gradient(white, grey);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
