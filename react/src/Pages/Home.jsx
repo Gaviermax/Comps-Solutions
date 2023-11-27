@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <>
+        
       {/* hero section */}
       <body className="bg-black text-light">
+      
+
           <div
             className="container-fluid bg-secondar d-flex flex-column align-items-start justify-content-center g-5"
             style={{ minHeight: "95vh", backgroundColor: "#95969D" }}

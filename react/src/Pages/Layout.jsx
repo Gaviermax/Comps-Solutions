@@ -1,5 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
 import '../App.css';
+import { Button } from "bootstrap";
 
 function Layout(){
     return(
@@ -34,7 +35,9 @@ function Layout(){
                     {/* <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"> */}
                     <ul className="navbar-nav me-4 mb-2 mb-lg-0 bg-light">
                         <li className="nav-item">
-                            <Link to="/services" className="nav-link text-light" href="#">🛒🛍️</Link> {/*temp pani, will find image */}
+                            {/* <button className="nav-link text-light" href="#">🛒🛍️</button> temp pani, will find image */}
+                            <button className="btn nav-link text-light bg-black rounded-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">🛍️</button>
+
                         </li>
                     </ul>
                     <Link to="/signup"><button className="btn btn-outline-light fw-medium me-4 rounded-0" type="button">Sign Up</button></Link>
