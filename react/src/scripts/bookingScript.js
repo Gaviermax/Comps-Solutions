@@ -14,3 +14,26 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+
+document.querySelector("#bookingForm").addEventListener("submit", ()=>{
+
+    addDoc(collection(db,"bookings"), {
+        firstname: document.querySelector("#firstname").value,
+        lastname: document.querySelector("#lastname").value,
+        description: document.querySelector("#description").value,
+        email: document.querySelector("#email").value,
+        contact: document.querySelector("#contact").value,
+        boookingType: document.querySelector("#boookingType").value,
+        date: document.querySelector("#date").value
+
+    });
+
+    document.querySelector("#firstname").value = "";
+    document.querySelector("#lastname").value = "";
+    document.querySelector("#description").value = "";
+     document.querySelector("#email").value = "";
+    document.querySelector("#contact").value = "";
+    document.querySelector("#boookingType").value = "";
+    document.querySelector("#date").value = "";
+});

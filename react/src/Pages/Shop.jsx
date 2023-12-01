@@ -5,6 +5,7 @@ import gpu from "../images/gpu.png";
 import cpuCase from "../images/case.png";
 import ram from "../images/ram.png";
 
+
 function Shop(){
     return(
 
