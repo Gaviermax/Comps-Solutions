@@ -1,4 +1,4 @@
-import bookingScript from "../scripts/bookingScript"
+// import bookingScript from "../scripts/bookingScript"
 
 function Book(){
     return(
@@ -58,7 +58,7 @@ function Book(){
 
                 </div>
             </div>
-            <script src={bookingScript}></script>
+
         </>
 
     )
