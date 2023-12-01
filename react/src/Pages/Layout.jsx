@@ -1,6 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
 import '../App.css';
-import { Button } from "bootstrap";
+
 
 function Layout(){
     return(
@@ -27,6 +27,9 @@ function Layout(){
                         </li>
                         <li className="nav-item">
                             <Link to="/book" className="nav-link text-light" href="#">Book</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/manageProduct" className="nav-link text-light" href="#">Manage</Link>
                         </li>
                     
                     </ul>

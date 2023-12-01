@@ -6,12 +6,14 @@ import Shop from "./Pages/Shop";
 import Contact from "./Pages/Contact";
 import Book from "./Pages/Book";
 import Error from "./Pages/Error";
+import ManageProduct from "./Pages/ManageProduct"
 import "./App.css";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import SignUp from "./Pages/SignUp";
 import Login from "./Pages/Login";
+
 
 function App() {
 
@@ -37,6 +39,7 @@ function App() {
               <Route path="shop" element={<Shop />}></Route>
               <Route path="contact" element={<Contact />}></Route>
               <Route path="book" element={<Book />}></Route>
+              <Route path="manageProduct" element={<ManageProduct />}></Route>
               <Route path="*" element={<Error />}></Route>
             </Route>
               <Route path="signup" element={<SignUp/>}></Route>
