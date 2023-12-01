@@ -1,51 +1,69 @@
 // import bookingScript from "../scripts/bookingScript"
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { auth } from '../config/firebase-config'; // Make sure to import your auth object
+import { query, where, getDocs } from 'firebase/firestore';
+
 
 function Book(){
+    const db = getFirestore();
     const submitBooking = async (e) => {
         e.preventDefault();
     
-        // Get form values
-        const firstName = document.getElementById('firstname').value;
-        const lastName = document.getElementById('lastname').value;
-        const description = document.getElementById('description').value;
-        const contactInput = document.getElementById('contact');
-        const email = document.getElementById('email').value;
-        const bookingType = document.getElementById('bookingType').value;
-        const date = document.getElementById('date').value;
-    
-        // Validate and format contact number
-        let contact = contactInput.value.trim();
-        const contactRegex = /^9\d{9}$/;
-
-        if (!contactRegex.test(contact)) {
-            alert('Invalid contact number. It should start with "+63" and have 10 digits.');
+        // Check if a user is logged in
+        const user = auth.currentUser;
+        if (!user) {
+            alert('You need to be logged in to make a booking.');
             return;
         }
+    
         try {
-          // Get the currently logged-in user
-          const user = auth.currentUser;
+            // Check if the user has already made a booking
+            const bookingsRef = collection(db, 'bookings');
+            const userBookingsQuery = query(bookingsRef, where('userId', '==', user.uid));
+            const userBookingsSnapshot = await getDocs(userBookingsQuery);
     
-          // Add the booking details to Firestore
-          const db = getFirestore();
-          await addDoc(collection(db, 'bookings'), {
-            userId: user.uid,
-            firstName,
-            lastName,
-            description,
-            contact,
-            email,
-            bookingType,
-            date,
-          });
+            if (!userBookingsSnapshot.empty) {
+                alert('You have already made a booking. You can only book once at a time. Complete or cancel your booking first before booking again.');
+                return;
+            }
     
-          alert('Booking Successful!');
+            // Get form values
+            const firstName = document.getElementById('firstname').value;
+            const lastName = document.getElementById('lastname').value;
+            const description = document.getElementById('description').value;
+            const contactInput = document.getElementById('contact');
+            const email = document.getElementById('email').value;
+            const bookingType = document.getElementById('bookingType').value;
+            const date = document.getElementById('date').value;
+    
+            // Validate and format contact number
+            let contact = contactInput.value.trim();
+            const contactRegex = /^9\d{9}$/;
+    
+            if (!contactRegex.test(contact)) {
+                alert('Invalid contact number. It should start with "9" and have 10 digits.');
+                return;
+            }
+    
+            // Add the booking details to Firestore
+            await addDoc(bookingsRef, {
+                userId: user.uid,
+                firstName,
+                lastName,
+                description,
+                contact,
+                email,
+                bookingType,
+                date,
+            });
+    
+            alert('Booking Successful!');
         } catch (error) {
-          console.error('Error adding document: ', error);
-          alert('Booking failed. Please try again.');
+            console.error('Error adding document: ', error);
+            alert('Booking failed. Please try again.');
         }
-      };
+    };
+    
 
       const handleContactInput = (e) => {
         const inputValue = e.target.value;
@@ -112,7 +130,11 @@ function Book(){
                         <input id="email" type="email" className="form-control mb-3" required placeholder="Enter active email address"/>
 
                         <label htmlFor="bookingType">Booking Type:</label>
-                        <input id="bookingType" type="text" className="form-control mb-3" required placeholder="e.g PC build, Repair, warranty"/>
+                        <select id="bookingType" className="form-control mb-3" required>
+                            <option value="PC Build">PC Build</option>
+                            <option value="Cleaning">Cleaning</option>
+                            <option value="Repair Service">Repair Service</option>
+                        </select>
                         <label htmlFor="date">Date:</label>
                         <input id="date" type="date" className="form-control mb-3" required/>
 
