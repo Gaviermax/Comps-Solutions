@@ -1,5 +1,3 @@
-// import bookingScript from "../scripts/bookingScript"
-
 function Book(){
     return(
         <>
@@ -15,24 +13,24 @@ function Book(){
                 <div className="container shadow p-4 rounded mt- bg-light">
                     <h1 className="text-center mt-3">Booking Details</h1>
                     <form action="#" id="bookingForm">
-                        <div className="row g-4 align-items-center mb-3 mt-1">
-                            <div className="col-6">
+                        <div class="row g-4 align-items-center mb-3 mt-1">
+                            <div class="col-6">
                                 <label htmlFor="firstname">First Name:</label>  
                                 <input
                                 id="firstname"
                                 type="text"
-                                className="form-control"
+                                class="form-control"
                                 aria-describedby="passwordHelpInline"
                                 placeholder="Enter your first name"
                                 required
                                 />
                             </div>
-                            <div className="col-6">
+                            <div class="col-6">
                                 <label htmlFor="lastname">Last Name:</label>  
                                 <input
                                 id="lastname"
                                 type="text"
-                                className="form-control"
+                                class="form-control"
                                 aria-describedby="passwordHelpInline"
                                 placeholder="Enter your First name"
                                 />
@@ -40,28 +38,34 @@ function Book(){
                         </div>
 
                         <label htmlFor="description">Description:</label>
-                        <input id="description" type="text" className="form-control mb-3" placeholder="Input description for the booking" required />
+                        <input id="description" type="text" class="form-control mb-3" placeholder="Input description for the booking" required />
 
                         <label htmlFor="contact">Contact Number:</label>
-                        <input id="contact" type="number" className="form-control mb-3" required placeholder="Enter your current phone number" />
+                        <input id="contact" type="number" class="form-control mb-3" required placeholder="Enter your current phone number" />
 
                         <label htmlFor="email">Email Address:</label>
-                        <input id="email" type="email" className="form-control mb-3" required placeholder="Enter active email address"/>
+                        <input id="email" type="email" class="form-control mb-3" required placeholder="Enter active email address"/>
 
                         <label htmlFor="bookingType">Booking Type:</label>
-                        <input id="bookingType" type="text" className="form-control mb-3" required placeholder="e.g PC build, Repair, warranty"/>
-                        <label htmlFor="date">Date:</label>
-                        <input id="date" type="date" className="form-control mb-3" required/>
+                        <input id="bookingType" type="text" class="form-control mb-3" required placeholder="e.g PC build, Repair, warranty"/>
 
-                        <button type="submit" className="btn btn-dark mt-3 px-4" onclick="submit">Book</button>
+                        <label htmlFor="date">Date:</label>
+                        <input id="date" type="date" class="form-control mb-3" required/>
+
+                        <button type="submit" class="btn btn-dark mt-3 px-4" onclick="submit">Book</button>
                     </form>
 
                 </div>
             </div>
+            
+            
 
         </>
+        
 
     )
+    
+    
 }
 
 export default Book;
