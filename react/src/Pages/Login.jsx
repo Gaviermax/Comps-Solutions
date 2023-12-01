@@ -1,6 +1,27 @@
-
 import { Link } from "react-router-dom";
+import { auth } from "../config/firebase-config";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate }from "react-router-dom"
+import React, { useState } from "react";
+
 export default function Login(){
+    const history = useNavigate();
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+  
+    const login = async () => {
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        // Redirect or perform any other actions after successful login
+        history("/"); // Change the destination as needed
+      } catch (err) {
+        console.error(err);
+        alert("Incorrect email or password!")
+        // Handle login errors, display a message, etc.
+      }
+    };
+      
     return(
         <>
             <>
@@ -13,12 +34,11 @@ export default function Login(){
                         <p className="fw-semibold fs-5" style={{color:'#555FFF', letterSpacing:'1.5px'}}>Discover a great amount of new opportunities!</p>
                         <div className="container card bg-white text-black mb-5 mt-3 rounded-5" style={{width:'50%'}}>
                             <form className="card-body" action="">
-                                <input className="form-control my-4" placeholder="Username" type="text" style={{height:'50px'}} />
-                                <input className="form-control my-4" placeholder="example@org.com" type="email" style={{height:'50px'}} />
-                                <input className="form-control my-4" placeholder="Password" type="password" style={{height:'50px'}} />
+                                <input onChange={(e) => setEmail(e.target.value)} className="form-control my-4" placeholder="example@org.com" type="email" style={{height:'50px'}} />
+                                <input onChange={(e) => setPassword(e.target.value)} className="form-control my-4" placeholder="Password" type="password" style={{height:'50px'}} />
                                 <Link className="my-5" style={{textDecoration:'none', color:'#949494'}}>Forgot password?</Link>
                                 <br />
-                                <button type="button" className="btn btn-success rounded-5 text-light py-2 mt-4 fw-bold" style={{width:'100%', letterSpacing:'2px'}}>LOGIN</button>
+                                <button onClick={login} type="button" className="btn btn-success rounded-5 text-light py-2 mt-4 fw-bold" style={{width:'100%', letterSpacing:'2px'}}>LOGIN</button>
                             </form>
                         </div>
                     </div>
@@ -29,5 +49,3 @@ export default function Login(){
         </>
     )
 }
-
-
