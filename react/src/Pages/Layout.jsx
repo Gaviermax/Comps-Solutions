@@ -1,8 +1,24 @@
 import { Outlet, Link } from "react-router-dom";
 import '../App.css';
+import { useEffect, useState } from "react";
+import { auth } from "../config/firebase-config";
+import { onAuthStateChanged } from "firebase/auth";
 import { Button } from "bootstrap";
 
 function Layout(){
+    const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    // Listen for changes in the authentication state
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      // Check if the user is logged in and has admin privileges
+      setIsAdmin(user && user.email === "admin@gmail.com");
+    });
+
+    // Clean up the subscription when the component unmounts
+    return () => unsubscribe();
+  }, []);
+
     return(
         <>
              <nav className="navbar navbar-expand-lg bg-black shadow sticky-top">
@@ -22,9 +38,13 @@ function Layout(){
                         <li className="nav-item">
                             <Link to="/about" className="nav-link text-light" href="#">About Us</Link>
                         </li>
+                        {isAdmin && (
                         <li className="nav-item">
-                            <Link to="/contact" className="nav-link text-light" href="#">Contact</Link>
-                        </li>
+                        <Link to="/contact" className="nav-link text-light" href="#">
+                        Contact
+                        </Link>
+                         </li>
+                        )}
                         <li className="nav-item">
                             <Link to="/book" className="nav-link text-light" href="#">Book</Link>
                         </li>
