@@ -1,32 +1,32 @@
 // import bookingScript from "../scripts/bookingScript"
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, doc, getDoc, serverTimestamp } from 'firebase/firestore';
 import { auth } from '../config/firebase-config'; // Make sure to import your auth object
 import { query, where, getDocs } from 'firebase/firestore';
 
-
-function Book(){
+function Book() {
     const db = getFirestore();
+
     const submitBooking = async (e) => {
         e.preventDefault();
-    
+
         // Check if a user is logged in
         const user = auth.currentUser;
         if (!user) {
             alert('You need to be logged in to make a booking.');
             return;
         }
-    
+
         try {
             // Check if the user has already made a booking
             const bookingsRef = collection(db, 'bookings');
             const userBookingsQuery = query(bookingsRef, where('userId', '==', user.uid));
             const userBookingsSnapshot = await getDocs(userBookingsQuery);
-    
+
             if (!userBookingsSnapshot.empty) {
                 alert('You have already made a booking. You can only book once at a time. Complete or cancel your booking first before booking again.');
                 return;
             }
-    
+
             // Get form values
             const firstName = document.getElementById('firstname').value;
             const lastName = document.getElementById('lastname').value;
@@ -35,19 +35,19 @@ function Book(){
             const email = document.getElementById('email').value;
             const bookingType = document.getElementById('bookingType').value;
             const date = document.getElementById('date').value;
-    
+
             // Validate and format contact number
             let contact = contactInput.value.trim();
             const contactRegex = /^9\d{9}$/;
-    
+
             if (!contactRegex.test(contact)) {
                 alert('Invalid contact number. It should start with "9" and have 10 digits.');
                 return;
             }
-    
-            // Add the booking details to Firestore
-            await addDoc(bookingsRef, {
-                userId: user.uid,
+
+            // Add the booking details to Firestore with userId and server timestamp
+            const newBookingRef = await addDoc(bookingsRef, {
+                userId: user.uid, // Connect the user's ID to the booking
                 firstName,
                 lastName,
                 description,
@@ -55,9 +55,17 @@ function Book(){
                 email,
                 bookingType,
                 date,
+                timestamp: serverTimestamp(), // Add server timestamp
             });
-    
+
             alert('Booking Successful!');
+
+            // Fetch the newly added booking document to show the user their booking information
+            const newBookingDoc = await getDoc(doc(bookingsRef, newBookingRef.id));
+            const bookingData = newBookingDoc.data();
+
+            // Show the user their booking information in an alert
+            alert(`Your Booking Information:\nName: ${bookingData.firstName} ${bookingData.lastName}\nDescription: ${bookingData.description}\nContact: +63 ${bookingData.contact}\nEmail: ${bookingData.email}\nType: ${bookingData.bookingType}\nDate: ${bookingData.date}\nTime Booked: ${new Date(bookingData.timestamp?.seconds * 1000).toLocaleString()}`);
         } catch (error) {
             console.error('Error adding document: ', error);
             alert('Booking failed. Please try again.');
