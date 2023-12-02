@@ -13,6 +13,8 @@ export default function Login(){
     const login = async () => {
       try {
         await signInWithEmailAndPassword(auth, email, password);
+        const isAdmin = email === "admin@gmail.com";
+        localStorage.setItem("isAdmin", isAdmin);
         // Redirect or perform any other actions after successful login
         history("/"); // Change the destination as needed
       } catch (err) {
