@@ -24,7 +24,7 @@ document.querySelector("#bookingForm").addEventListener("submit", ()=>{
         description: document.querySelector("#description").value,
         email: document.querySelector("#email").value,
         contact: document.querySelector("#contact").value,
-        boookingType: document.querySelector("#boookingType").value,
+        boookingType: document.querySelector("#bookingType").value,
         date: document.querySelector("#date").value
 
     });
@@ -32,8 +32,8 @@ document.querySelector("#bookingForm").addEventListener("submit", ()=>{
     document.querySelector("#firstname").value = "";
     document.querySelector("#lastname").value = "";
     document.querySelector("#description").value = "";
-     document.querySelector("#email").value = "";
+    document.querySelector("#email").value = "";
     document.querySelector("#contact").value = "";
-    document.querySelector("#boookingType").value = "";
+    document.querySelector("#bookingType").value = "";
     document.querySelector("#date").value = "";
-});
+    });

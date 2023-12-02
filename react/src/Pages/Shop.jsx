@@ -59,6 +59,7 @@ function Shop(){
                             <div className="card-body">
                                 <h5 className="card-title">Mitsubishi Lancer</h5>
                                 <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <button className="btn btn-light px-2 py-0"data-bs-toggle="modal" data-bs-target="#staticBackdrop">⇱</button>
                             <div className="text-end">
                                 <p className="text-urple fw-bold"><span className="badge bg-danger me-2">-10%</span>$199</p>
                                 <Link to="#" className="btn text-light outline-purple px-2 me-2" style={{borderColor:"#555FFF",}}>♡</Link>
@@ -74,6 +75,7 @@ function Shop(){
                             <div className="card-body">
                                 <h5 className="card-title">Mitsubishi Lancer</h5>
                                 <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <button className="btn btn-light px-2 py-0"data-bs-toggle="modal" data-bs-target="#staticBackdrop">⇱</button>
                             <div className="text-end">
                                 <p className="text-urple fw-bold"><span className="badge bg-danger me-2">-10%</span>$19</p>
                                 <Link to="#" className="btn text-light outline-purple px-2 me-2" style={{borderColor:"#555FFF",}}>♡</Link>
@@ -89,6 +91,7 @@ function Shop(){
                             <div className="card-body">
                                 <h5 className="card-title">Mitsubishi Lancer</h5>
                                 <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <button className="btn btn-light px-2 py-0"data-bs-toggle="modal" data-bs-target="#staticBackdrop">⇱</button>
                             <div className="text-end">
                                 <p className="text-urple fw-bold"><span className="badge bg-danger me-2">-10%</span>$29</p>
                                 <Link to="#" className="btn text-light outline-purple px-2 me-2" style={{borderColor:"#555FFF",}}>♡</Link>
