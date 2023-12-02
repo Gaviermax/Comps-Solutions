@@ -2,10 +2,10 @@
 import { getFirestore, collection, addDoc, doc, getDoc, serverTimestamp } from 'firebase/firestore';
 import { auth } from '../config/firebase-config'; // Make sure to import your auth object
 import { query, where, getDocs } from 'firebase/firestore';
+import React, { useState, useEffect } from 'react';
 
 function Book() {
     const db = getFirestore();
-
     const submitBooking = async (e) => {
         e.preventDefault();
 
@@ -80,6 +80,14 @@ function Book() {
         }
       };
 
+      const [minDate, setMinDate] = useState('');
+
+        useEffect(() => {
+            // Set minDate to the current date in the format YYYY-MM-DD
+            const currentDate = new Date().toISOString().split('T')[0];
+            setMinDate(currentDate);
+        }, []);
+        
     return(
         <>
             <div className="bg-black d-flex justify-content-center align-items-center px-5 shadow" style={{minHeight:'100vh'}}>
@@ -144,7 +152,7 @@ function Book() {
                             <option value="Repair Service">Repair Service</option>
                         </select>
                         <label htmlFor="date">Date:</label>
-                        <input id="date" type="date" className="form-control mb-3" required/>
+                        <input id="date" type="date" className="form-control mb-3" required min={minDate}/>
 
                         <button type="submit" className="btn btn-dark mt-3 px-4" onclick="submit">Book</button>
                     </form>
