@@ -42,17 +42,18 @@ function Layout(){
                         {isAdmin && (
                         <li className="nav-item">
                         <Link to="/contact" className="nav-link text-light" href="#">
-                        Contact
+                        Listings
                         </Link>
                          </li>
                         )}
                         <li className="nav-item">
                             <Link to="/book" className="nav-link text-light" href="#">Book</Link>
                         </li>
+                        {isAdmin && (
                         <li className="nav-item">
                             <Link to="/manageProduct" className="nav-link text-light" href="#">Manage</Link>
                         </li>
-                    
+                    )}
                     </ul>
 
                 <form className="d-flex" role="search">
