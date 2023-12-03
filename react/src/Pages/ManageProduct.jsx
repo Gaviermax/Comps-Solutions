@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-
+import { getDocs, query, where } from 'firebase/firestore';
+import { updateDoc, doc } from 'firebase/firestore';
 
 function ManageProduct() {
   const db = getFirestore();
@@ -24,50 +25,58 @@ function ManageProduct() {
   };
 
   const submitProduct = async (e) => {
-
     const confirmAdd = window.confirm("Complete product addition?");
-
-    if(confirmAdd){
-    e.preventDefault();
-
-    try {
-      setLoading(true);
-      const productName = document.getElementById('productName').value;
-      const productPrice = parseFloat(document.getElementById('productPrice').value);
-      const stocks = parseInt(document.getElementById('stocks').value);
-      const productDescription = document.getElementById('productDescription').value;
-
-      // Handle image upload and get the download URL
-      const productImgInput = document.getElementById('productImg');
-      const productImgFile = productImgInput.files[0];
-
-      if (!productImgFile) {
-        alert('Please choose an image file.');
-        return;
+  
+    if (confirmAdd) {
+      e.preventDefault();
+  
+      try {
+        setLoading(true);
+        const productName = document.getElementById('productName').value;
+        const productPrice = parseFloat(document.getElementById('productPrice').value);
+        const stocks = parseInt(document.getElementById('stocks').value);
+        const productDescription = document.getElementById('productDescription').value;
+  
+        // Check if a product with the same name already exists
+        const productQuery = collection(db, 'products');
+        const matchingProduct = await getDocs(query(productQuery, where('productName', '==', productName)));
+  
+        if (matchingProduct.size > 0) {
+          // If the product already exists, update its stocks
+          const existingProduct = matchingProduct.docs[0];
+          const existingStocks = existingProduct.data().stocks;
+          const updatedStocks = existingStocks + stocks;
+  
+          await updateDoc(doc(db, 'products', existingProduct.id), {
+            stocks: updatedStocks,
+            timestamp: serverTimestamp(),
+          });
+  
+          alert(`Product "${productName}" already exists. Stocks updated successfully!`);
+        } else {
+          // If the product doesn't exist, add a new product
+          const storageRef = ref(storage, `productImages/${productName}-${Date.now()}`);
+          await uploadBytes(storageRef, productImgFile);
+          const imageUrl = await getDownloadURL(storageRef);
+  
+          await addDoc(collection(db, 'products'), {
+            productName,
+            productPrice,
+            stocks,
+            imageUrl,
+            productDescription,
+            timestamp: serverTimestamp(),
+          });
+  
+          alert('Product added successfully!');
+        }
+      } catch (error) {
+        console.error('Error adding product: ', error);
+        alert('Failed to add product. Please try again.');
+      } finally {
+        setLoading(false);
       }
-
-      const storageRef = ref(storage, `productImages/${productName}-${Date.now()}`);
-      await uploadBytes(storageRef, productImgFile);
-      const imageUrl = await getDownloadURL(storageRef);
-
-      // Add product details to Firestore
-      await addDoc(collection(db, 'products'), {
-        productName,
-        productPrice,
-        stocks,
-        imageUrl,
-        productDescription,
-        timestamp: serverTimestamp(),
-      });
-
-      alert('Product added successfully!');
-    } catch (error) {
-      console.error('Error adding product: ', error);
-      alert('Failed to add product. Please try again.');
-    } finally {
-        setLoading(false); // Set loading to false when the form submission completes (success or failure)
     }
-  }
   };
 
   return (
