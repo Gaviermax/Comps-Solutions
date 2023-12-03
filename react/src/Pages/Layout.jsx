@@ -22,9 +22,15 @@ function Layout() {
       return () => unsubscribe();
     }, []);
   
+    
     const handleSignOut = () => {
-      // Sign out the user
-      auth.signOut();
+        // Ask for confirmation before signing out
+        const confirmSignOut = window.confirm("Are you sure you want to sign out?");
+        
+        if (confirmSignOut) {
+        // Sign out the user
+        auth.signOut();
+        }
     };
 
     return(
