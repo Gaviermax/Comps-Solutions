@@ -22,10 +22,10 @@ function Book() {
             const userBookingsQuery = query(bookingsRef, where('userId', '==', user.uid));
             const userBookingsSnapshot = await getDocs(userBookingsQuery);
 
-            if (!userBookingsSnapshot.empty) {
-                alert('You have already made a booking. You can only book once at a time. Complete or cancel your booking first before booking again.');
+            if (userBookingsSnapshot.size >= 3) {
+                alert("You have reached the maximum limit of 3 bookings. Complete or cancel your existing bookings before booking again.");
                 return;
-            }
+              }
 
             // Get form values
             const firstName = document.getElementById('firstname').value;
@@ -42,6 +42,15 @@ function Book() {
 
             if (!contactRegex.test(contact)) {
                 alert('Invalid contact number. It should start with "9" and have 10 digits.');
+                return;
+            }
+
+            // Check if there are already 3 bookings for the same date
+            const sameDateBookingsQuery = query(bookingsRef, where('date', '==', date));
+            const sameDateBookingsSnapshot = await getDocs(sameDateBookingsQuery);
+
+            if (sameDateBookingsSnapshot.size >= 3) {
+                alert("There are already 3 bookings for the selected date. Please choose a different date.");
                 return;
             }
 
@@ -93,10 +102,10 @@ function Book() {
         <>
             <div className="bg-black d-flex justify-content-center align-items-center px-5 shadow" style={{minHeight:'100vh'}}>
                 <div className="container leftDescription text-light px-5">
-                    <h1 className="mb-4"> <span style={{borderBottom:'5px solid #555FFF'}}>Booking F</span>orm</h1>
-                    <p className="fs-4">Start the first step for building your dream PC by filling out the form</p>
+                    <h1 className="mb-4"> <span style={{borderBottom:'5px solid #555FFF'}}>Booking Form</span></h1>
+                    <p className="fs-4">Start the first step for building your dream PC by filling out the form.</p>
                     <br />
-                    <p className="fs-4">after submitting the application form, we will be reaching out to you via email address or phone number for the next steps.</p>
+                    <p className="fs-4">After submitting the application form, we will be reaching out to you via email address or phone number for the next steps.</p>
                     <br />
                     <p className="fs-4">We are excited to be part of your journey!</p>
                 </div>
