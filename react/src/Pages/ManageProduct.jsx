@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
@@ -7,7 +7,6 @@ function ManageProduct() {
   const db = getFirestore();
   const storage = getStorage();
   const [loading, setLoading] = useState(false);
-
   const [imagePreview, setImagePreview] = useState(null);
 
   const handleImageChange = (e) => {
@@ -25,6 +24,10 @@ function ManageProduct() {
   };
 
   const submitProduct = async (e) => {
+
+    const confirmAdd = window.confirm("Complete product addition?");
+
+    if(confirmAdd){
     e.preventDefault();
 
     try {
@@ -64,6 +67,7 @@ function ManageProduct() {
     } finally {
         setLoading(false); // Set loading to false when the form submission completes (success or failure)
     }
+  }
   };
 
   return (
