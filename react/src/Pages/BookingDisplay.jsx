@@ -2,10 +2,13 @@ import React from "react";
 import { deleteDoc, doc, getDoc } from 'firebase/firestore';
 import { getFirestore } from "firebase/firestore";
 
-const BookingDisplay = ({ bookings, onBookingDelete }) => {
+const BookingDisplay = ({ bookings }) => {
   const db = getFirestore();
 
   const handleDelete = async (bookingId) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this booking?");
+
+    if(confirmDelete){
     try {
       // Delete the booking from Firestore
       await deleteDoc(doc(db, 'bookings', bookingId));
@@ -25,6 +28,7 @@ const BookingDisplay = ({ bookings, onBookingDelete }) => {
       // Show error alert if deletion fails
       alert('Error deleting booking. Please try again.');
     }
+  }
   };
 
   return (
