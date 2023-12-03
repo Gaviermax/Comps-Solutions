@@ -35,56 +35,56 @@ function Shop(){
 
 
 
-    // onSnapshot(collection(db,"products"), snapshot => {
-    //     document.querySelector("#productArea").innerHTML = "";
-    //     snapshot.forEach(product =>{
-    //         let showProduct = 
-    //         // console.log(booking.data().imageURL)
-    //         // `<tr>
-    //         //     <td>${booking.data().lastname}</td>
-    //         //     <td>${booking.data().firstname}</td>
-    //         //     <td>${booking.data().description}</td>
-    //         //     <td>${booking.data().contact}</td>
-    //         //     <td>${booking.data().email}</td>
-    //         //     <td>${booking.data().bookingType}</td>
-    //         //     <td>${booking.data().date}</td>
-    //         // </tr>`;
-    //         `
-    //         <div class="col">
-    //                     <div class="card bg-dark text-light" data-aos="zoom-out-right">
-    //                         <Link><img src=${product.data().imageURL} class="card-img-top" alt="..."/></Link>
+    onSnapshot(collection(db,"products"), snapshot => {
+        // document.querySelector("#productArea").innerHTML = "";
+        snapshot.forEach(product =>{
+            let showProduct = 
+            // console.log(booking.data().imageURL)
+            // `<tr>
+            //     <td>${booking.data().lastname}</td>
+            //     <td>${booking.data().firstname}</td>
+            //     <td>${booking.data().description}</td>
+            //     <td>${booking.data().contact}</td>
+            //     <td>${booking.data().email}</td>
+            //     <td>${booking.data().bookingType}</td>
+            //     <td>${booking.data().date}</td>
+            // </tr>`;
+            `
+            <div class="col card-deck">
+                        <div class="card bg-dark text-light" data-aos="zoom-out-right">
+                            <Link><img src=${product.data().imageURL} class="card-img-top" alt="..."/></Link>
 
-    //                         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    //                             <div class="modal-dialog modal-fullscreen">
-    //                                 <div class="modal-content">
-    //                                     <div class="modal-header">
-    //                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-    //                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    //                                     </div>
-    //                                     <div class="modal-body">
-    //                                         ...
-    //                                     </div>
-    //                                 </div>
-    //                             </div>
-    //                         </div>
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-fullscreen">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            ...
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-    //                         <div class="card-body">
-    //                             <h5 class="card-title">${product.data().productName}</h5>
-    //                             <p class="card-text">${product.data().productDescription}</p>
-    //                             <button class="btn btn-light px-2 py-0"data-bs-toggle="modal" data-bs-target="#staticBackdrop">⇱</button>
-    //                         <div class="text-end">
+                            <div class="card-body">
+                                <h5 class="card-title">${product.data().productName}</h5>
+                                <p class="card-text">${product.data().productDescription}</p>
+                                <button class="btn btn-light px-2 py-0"data-bs-toggle="modal" data-bs-target="#staticBackdrop">⇱</button>
+                            <div class="text-end">
                                 
-    //                             <p class="text-urple fw-bold"><span class="badge bg-danger me-2">-10%</span>$${product.data().productPrice}</p>
-    //                             <a to="#" class="btn outline-purple text-light px-2 me-2" style={{borderColor:"#555FFF",}}>♡</a>
-    //                             <a href="/" class="btn btn-purple fw-bold px-2">Buy Now</a></div>
-    //                             <p class="card-text"><small class="text-purple">Available stocks: ${product.data().stocks}</small></p>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //         `
-    //         document.querySelector("#productArea").innerHTML += showProduct;
-    //     });
-    // });
+                                <p class="text-urple fw-bold"><span class="badge bg-danger me-2">-10%</span>$${product.data().productPrice}</p>
+                                <a to="#" class="btn outline-purple text-light px-2 me-2" style="border-color:#555FFF">♡</a>
+                                <a href="/" class="btn btn-purple fw-bold px-2">Buy Now</a></div>
+                                <p class="card-text"><small class="text-purple">Available stocks: ${product.data().stocks}</small></p>
+                            </div>
+                        </div>
+                    </div>
+            `
+            document.querySelector("#productArea").innerHTML += showProduct;
+        });
+    });
 
     return(
 
@@ -105,14 +105,29 @@ function Shop(){
                             <Link><img src={cpu} className="card-img-top" alt="..."/></Link>
 
                             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-fullscreen">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <div class="modal-dialog modal-fullscreen text-light">
+                                    <div class="container mx-5 mb-5 modal-content bg-dark">
+                                        <div class="modal-header" data-bs-theme="dark">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Ryzen 5 7000 Series</h1>
+                                            <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <div class="modal-body">
-                                            ryzen
+                                        <div class="modal-body d-flex justify-content-evenly">
+                                            <div className="">
+                                                <img src={cpu} alt="cpu" />
+                                            </div>
+                                            <div className="co">
+                                                <h2>Product Name</h2>
+                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas ratione possimus perferendis quos iusto adipisci consequuntur aliquid quod, totam tempora iste quo dicta deleniti cum ducimus incidunt facilis autem sint.</p>
+                                                <h4>Product price <span class="badge bg-danger">less</span></h4>
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <button type="button" class="btn outline-purple text-purple" style={{borderColor:"#555FFF"}}>-</button>
+                                                    <button type="button" class="btn disabled btn-purple text-light" style={{borderColor:"#555FFF"}}>0</button>
+                                                    <button type="button" class="btn outline-purple text-purple" style={{borderColor:"#555FFF"}}>+</button>
+                                                </div>
+                                                <br />
+                                                    <a href="#" class="btn btn-purple">Buy Now</a>
+                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
