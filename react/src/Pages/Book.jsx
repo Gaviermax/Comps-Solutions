@@ -7,6 +7,10 @@ import React, { useState, useEffect } from 'react';
 function Book() {
     const db = getFirestore();
     const submitBooking = async (e) => {
+
+        const confirmAddbooking = window.confirm("Confirm booking?");
+
+        if(confirmAddbooking){
         e.preventDefault();
 
         // Check if a user is logged in
@@ -79,6 +83,7 @@ function Book() {
             console.error('Error adding document: ', error);
             alert('Booking failed. Please try again.');
         }
+    }
     };
     
 
