@@ -36,7 +36,7 @@ function Shop(){
 
 
     onSnapshot(collection(db,"products"), snapshot => {
-        // document.querySelector("#productArea").innerHTML = "";
+        document.querySelector("#productArea").innerHTML = "";
         snapshot.forEach(product =>{
             let showProduct = 
 
@@ -79,7 +79,7 @@ function Shop(){
                                                     </div>
                                                     <br />
                                                     <div class="col-8 d-flex justify-content-end">
-                                                        <a href="#" class="btn btn-purple mx-auto px-5 w-50" id=${product}>Buy Now</a>
+                                                        <a href="#" class="btn btn-purple mx-auto px-5 w-50" id=${product}>🛒 Add to Cart</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -110,6 +110,17 @@ function Shop(){
     return(
 
         <body className="bg-black">
+            {/* add to cart modal */}
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasRightLabel">Cart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    {/* add props nga mu get from shop */}
+                </div>
+            </div>
+
             <div className="container py-3">
                 <h1 className="mb-5 fw-bold text-center" style={{
                     color: 'white'
@@ -121,7 +132,7 @@ function Shop(){
             <div className="container py-5">
                 <h1 className="text-light badge bg-success">Best Collections</h1>
                 <div className="row row-cols-1 row-cols-md-4 g-4" id="productArea">
-                     <div className="col">
+                     {/* <div className="col">
                         <div className="card bg-dark text-light" data-aos="zoom-out-right">
                             <Link><img src={cpu} className="card-img-top" alt="..."/></Link>
 
@@ -172,9 +183,9 @@ function Shop(){
                                 <p className="card-text"><small className="text-purple">Available in stock</small></p>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
-                    <div className="col">
+                    {/* <div className="col">
                         <div className="card bg-dark text-light" data-aos="zoom-out-right">
                             <img src={gpu} className="card-img-top" alt="..."/>
                             <div className="card-body">
@@ -188,7 +199,7 @@ function Shop(){
                                 <p className="card-text"><small className="text-purple">Available in stock</small></p>
                             </div>
                         </div>
-                     </div>
+                     </div> */}
 
                    {/* <div className="col">
                         <div className="card bg-dark text-light" data-aos="zoom-out-right">
