@@ -67,10 +67,10 @@ function Shop(){
                                             <div class="" style="min-height:">
                                                 <img src=${gpu} alt="cpu" />
                                             </div>
-                                            <div class="col p-5 bg-danger" style={{maxWidth:'50%'}}>
-                                                <h2 class = "mb-4">${product.data().productName}</h2>
+                                            <div class="col p-5" style={{maxWidth:'50%'}}>
+                                                <h2 class = "mb-4" style="max-width:20ch">${product.data().productName}</h2>
                                                 <p class = "mb-4 text-justify">${product.data().productDescription}</p>
-                                                <h4>${product.data().productPrice} <span class="badge bg-danger">-10%</span></h4>
+                                                <h4>$${product.data().productPrice}</h4>
                                                 <div class="buttonGroup row mt-5">
                                                     <div class="btn-group col-4" role="group" aria-label="Basic example">
                                                         <button type="button" class="btn outline-purple text-purple" style="border-color:$555FFF">-</button>
@@ -81,6 +81,7 @@ function Shop(){
                                                     <div class="col-8 d-flex justify-content-end">
                                                         <a href="#" class="btn btn-purple mx-auto px-5 w-50" id=${product}>🛒 Add to Cart</a>
                                                     </div>
+                                                    <p class="card-text mt-3"><small class="text-purple">Available stocks: ${product.data().stocks}</small></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -97,7 +98,6 @@ function Shop(){
                                 <p class="text-urple fw-bold"><span class="badge bg-danger me-2">-10%</span>$${product.data().productPrice}</p>
                                 <a to="#" class="btn outline-purple text-light px-2 me-2" style="border-color:#555FFF">♡</a>
                                 <a href="/" class="btn btn-purple fw-bold px-2" id= ${product.id} >Buy Now</a></div>
-                                <p class="card-text"><small class="text-purple">Available stocks: ${product.data().stocks}</small></p>
                             </div>
                         </div>
                     </div>
@@ -109,7 +109,7 @@ function Shop(){
 
     return(
 
-        <body className="bg-black">
+        <body className="bg-black" style={{minHeight:"100vh"}}>
             {/* add to cart modal */}
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
