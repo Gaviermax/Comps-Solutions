@@ -116,8 +116,16 @@ function Shop(){
                     <h5 class="offcanvas-title" id="offcanvasRightLabel">Cart</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div class="offcanvas-body">
-                    {/* add props nga mu get from shop */}
+                <div class="offcanvas-body card">
+                    <div className="row">
+                        <img src={cpu} alt="" className="col-3 img-fluid rounded-3"/>
+                        <div className="col-7">
+                            <p className="col-">Ryzen 5 7000 Series</p>
+                            <small className="text-secondary">1 x $199</small>
+                        </div>
+                        <button type="button" class="btn-close col-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        <hr className="mt-3"/>
+                    </div>
                 </div>
             </div>
 
