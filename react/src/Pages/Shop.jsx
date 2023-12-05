@@ -97,7 +97,7 @@ function Shop(){
                                 
                                 <p class="text-urple fw-bold"><span class="badge bg-danger me-2">-10%</span>$${product.data().productPrice}</p>
                                 <a to="#" class="btn outline-purple text-light px-2 me-2" style="border-color:#555FFF">♡</a>
-                                <a href="/" class="btn btn-purple fw-bold px-2" id= ${product.id} >Buy Now</a></div>
+                                <a href="/" class="btn btn-purple fw-bold px-2" id= ${product.id}>Buy Now</a></div>
                             </div>
                         </div>
                     </div>
