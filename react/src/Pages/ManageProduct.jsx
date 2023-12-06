@@ -73,6 +73,10 @@ function ManageProduct() {
           });
   
           alert('Product added successfully!');
+          document.querySelector("#productName").value=""
+          document.querySelector("#productPrice").value=""
+          document.querySelector("#stocks").value=""
+          document.querySelector("#productDescription").value=""
         }
       } catch (error) {
         console.error('Error adding product: ', error);
@@ -117,6 +121,7 @@ function ManageProduct() {
             {imagePreview && (
               <img
                 src={imagePreview}
+                id="imgPreview"
                 alt="Image Preview"
                 className="img-fluid mb-3"
                 style={{ maxHeight: '150px' }}
