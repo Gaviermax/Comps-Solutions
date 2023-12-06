@@ -37,58 +37,54 @@ function Home() {
             </div>
           </div>
           {/* end of hero */}
-          <div
-            className="container-fluid d-flex justify-content-evenly align-items-center flex-column text-center my-5"
-            style={{ minHeight: "100vh" }}
-          >
+
+          <div className="container-fluid d-flex justify-content-evenly align-items-center flex-column text-center my-5" style={{ minHeight: "100vh" }}>
             <h1 style={{ maxWidth: "30ch"}} className="quality text-light">
               <span className="" style={{borderTop:"4px solid #555FFF"}}>Most Searched </span>Computer Parts
             </h1>
-            <div
-              className="container-fluid cardArea d-flex flew-column justify-content-evenly align-items-evenly"
-              style={{ width: "100%" }}
-            >
-            <div className="text-center my-5" style={{ width: "25rem" }}>
-                <div className="card-body py-5 text-center d-flex justify-content-end flex-column">
-                  <h5 className="card-title py-3 text-center">
-                    Central Processing Unit (CPU)
+            <div className="container-fluid cardArea d-flex flew-column justify-content-between align-items-between"style={{ width: "100%" }}>
+                <div className="text-center my-5" style={{ width: "25rem" }}>
+                    <div className="card-body py-5 text-center d-flex justify-content-end flex-column">
+                    <h5 className="card-title py-3 text-center">
+                        Central Processing Unit (CPU)
 
-                  </h5>
-                  <p className="card-text py-3 ">
-                  The CPU is often considered the brain of the computer. It performs calculations and executes instructions required to run programs and applications. It handles tasks like arithmetic, logic operations, and overall system control.
-                  </p>
-                  <Link href="#" className="btn btn-purple px-5 w-75 mx-auto">
-                    Learn More
-                  </Link>
+                    </h5>
+                    <p className="card-text py-3 ">
+                    The CPU is often considered the brain of the computer. It performs calculations and executes instructions required to run programs and applications. It handles tasks like arithmetic, logic operations, and overall system control.
+                    </p>
+                    <Link href="#" className="btn btn-purple px-5 w-75 mx-auto">
+                        Learn More
+                    </Link>
+                    </div>
                 </div>
-            </div>
 
-              <div className="text-center my-5" style={{ width: "25rem" }}>
-                <div className="card-body py-5 d-flex flex-column">
-                  <h5 className="card-title py-3">
-                  Random Access Memory (RAM)
-                  </h5>
-                  <p className="card-text py-3" >
-                    RAM is the temporary memory that allows the CPU to access and manipulate data quickly. When a computer is running, it loads data from the hard drive or SSD into RAM for faster access by the CPU. 
-                  </p>
-                  <Link href="#" className="btn btn-purple px-5 w-75 mx-auto">
-                    Learn More
-                  </Link>
+                <div className="text-center my-5" style={{ width: "25rem" }}>
+                    <div className="card-body py-5 d-flex flex-column">
+                    <h5 className="card-title py-3">
+                    Random Access Memory (RAM)
+                    </h5>
+                    <p className="card-text py-3" >
+                        RAM is the temporary memory that allows the CPU to access and manipulate data quickly. When a computer is running, it loads data from the hard drive or SSD into RAM for faster access by the CPU. 
+                    </p>
+                    <Link href="#" className="btn btn-purple px-5 w-75 mx-auto">
+                        Learn More
+                    </Link>
+                    </div>
                 </div>
-              </div>
-              <div className="text-center my-5" style={{ width: "25rem" }}>
-                <div className="card-body py-5">
-                  <h5 className="card-title py-3">
-                  Storage (HDD or SSD)
-                  </h5>
-                  <p className="card-text py-3">
-                  Storage devices, such as hard disk drives (HDDs) and solid-state drives (SSDs), store the computer's operating system, software applications, files, and data. HDDs use spinning magnetic disks to store data, while SSDs use flash memory, providing faster read and write speeds
-                  </p>
-                  <Link href="#" className="btn btn-purple px-5 w-75">
-                    Learn More
-                  </Link>
+
+                <div className="text-center my-5" style={{ width: "25rem" }}>
+                    <div className="card-body py-5">
+                    <h5 className="card-title py-3">
+                    Storage (HDD or SSD)
+                    </h5>
+                    <p className="card-text py-3">
+                    Storage devices, such as hard disk drives (HDDs) and solid-state drives (SSDs), store the computer's operating system, software applications, files, and data. HDDs use spinning magnetic disks to store data, while SSDs use flash memory, providing faster read and write speeds
+                    </p>
+                    <Link href="#" className="btn btn-purple px-5 w-75">
+                        Learn More
+                    </Link>
+                    </div>
                 </div>
-              </div>
             </div>
           </div>
           <div className="container-fluid bg-light text-dark">

@@ -32,12 +32,37 @@ function Shop(){
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
     // const storage = getStorage(app)
+    
+
+    
+
 
 
 
     onSnapshot(collection(db,"products"), snapshot => {
         document.querySelector("#productArea").innerHTML = "";
         snapshot.forEach(product =>{
+            const addToCart = (currentProd) =>{
+                snapshot.forEach(product =>{
+                    if(currentProd === product.id){
+                        let showCartItem =
+                        `
+                        <div className="row">
+                            <img src=${product.data().imageUrl} alt="" className="col-3 img-fluid rounded-3"/>
+                            <div className="col-7">
+                                <p className="col-">${product.data().productName}</p>
+                                <small className="text-secondary">1 x ${product.data().productPrice}</small>
+                            </div>
+                            <button type="button" class="btn-close col-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            <hr className="mt-3"/>
+                        </div>
+                        `
+                        document.querySelector("#cartArea").innerHTML = "";
+                        document.querySelector("#cartArea").innerHTML += showCartItem;
+                    }
+                })
+            }
+
             let showProduct = 
 
             // `<tr>
@@ -52,7 +77,7 @@ function Shop(){
             `
             <div class="col card-deck">
                         <div class="card bg-dark text-light" data-aos="zoom-out-right">
-                            <Link><img src=${product.data().imageURL} class="card-img-top" alt="..."/></Link>
+                            <Link><img src=${product.data().imageUrl} class="card-img-top img-fluid" alt="..."/></Link>
 
 
 
@@ -64,8 +89,8 @@ function Shop(){
                                             <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body d-flex justify-content-evenly align-items-center">
-                                            <div class="" style="min-height:">
-                                                <img src=${gpu} alt="cpu" />
+                                            <div class="" style="max-width:40%">
+                                                <img class="img-fluid" src=${product.data().imageUrl} alt="cpu" style="max-width:100%"/>
                                             </div>
                                             <div class="col p-5" style={{maxWidth:'50%'}}>
                                                 <h2 class = "mb-4" style="max-width:20ch">${product.data().productName}</h2>
@@ -103,14 +128,21 @@ function Shop(){
                                 
                                 <p class="text-urple fw-bold">$${product.data().productPrice}</p>
                                 <a to="#" class="btn outline-purple text-light px-2 me-2" style="border-color:#555FFF">♡</a>
-                                <a href="/" class="btn btn-purple fw-bold px-2" id= ${product.id}>Buy Now</a></div>
+                                <a href="#" class="btn btn-purple fw-bold px-2 btn-buy" id= ${product.id} onClick>Buy Now</a></div>
                             </div>
                         </div>
                     </div>
             `
-            document.querySelector("#productArea").innerHTML += showProduct;
 
+            document.querySelector("#productArea").innerHTML += showProduct;
         });
+        const buyButtons = document.querySelector(".btn-buy");
+        buyButtons.forEach((marbutton)=>{
+            marbutton.addEventListener("click",(event)=>{
+                // console.log(event.target.id)
+                addToCart(event.target.id);
+            });
+        })
     });
 
     return(
@@ -122,7 +154,7 @@ function Shop(){
                     <h5 class="offcanvas-title" id="offcanvasRightLabel">Cart</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div class="offcanvas-body card">
+                <div class="offcanvas-body card" id="cartArea">
                     <div className="row">
                         <img src={cpu} alt="" className="col-3 img-fluid rounded-3"/>
                         <div className="col-7">

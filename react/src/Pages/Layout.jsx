@@ -70,14 +70,13 @@ function Layout() {
                     </ul>
 
                 <form className="d-flex" role="search">
-                    {/* <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"> */}
                     <ul className="navbar-nav me-4 mb-2 mb-lg-0 bg-light">
                         <li className="nav-item">
-                            {/* <button className="nav-link text-light" href="#">🛒🛍️</button> temp pani, will find image */}
                             <button className="btn nav-link text-light bg-black rounded-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">🛍️</button>
 
                         </li>
                     </ul>
+
                     {user ? (
                     <>
                         <button
@@ -102,6 +101,7 @@ function Layout() {
                         </Link>
                     </>
                     )}
+
                 </form>
                 </div>
             </div>
