@@ -36,7 +36,7 @@ function Shop(){
 
 
     onSnapshot(collection(db,"products"), snapshot => {
-        // document.querySelector("#productArea").innerHTML = "";
+        document.querySelector("#productArea").innerHTML = "";
         snapshot.forEach(product =>{
             let showProduct = 
             // console.log(booking.data().imageURL)
@@ -72,9 +72,15 @@ function Shop(){
                                 <h5 class="card-title">${product.data().productName}</h5>
                                 <p class="card-text">${product.data().productDescription}</p>
                                 <button class="btn btn-light px-2 py-0"data-bs-toggle="modal" data-bs-target="#staticBackdrop">⇱</button>
+                                <br>
+
+                                <button class="badge btn bg-danger me-2 mt-3">Delete</button>
+
+
+                                
                             <div class="text-end">
                                 
-                                <p class="text-urple fw-bold"><span class="badge bg-danger me-2">-10%</span>$${product.data().productPrice}</p>
+                                <p class="text-urple fw-bold">$${product.data().productPrice}</p>
                                 <a to="#" class="btn outline-purple text-light px-2 me-2" style="border-color:#555FFF">♡</a>
                                 <a href="/" class="btn btn-purple fw-bold px-2">Buy Now</a></div>
                                 <p class="card-text"><small class="text-purple">Available stocks: ${product.data().stocks}</small></p>
