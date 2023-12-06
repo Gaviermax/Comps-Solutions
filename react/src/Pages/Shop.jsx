@@ -92,10 +92,16 @@ function Shop(){
                             <div class="card-body">
                                 <h5 class="card-title">${product.data().productName}</h5>
                                 <p class="card-text">${product.data().productDescription}</p>
+
                                 <button class="btn btn-light px-2 py-0"data-bs-toggle="modal" data-bs-target=#${product.data().productName}>⇱</button>
+
+                                <button class="badge btn bg-danger me-2 mt-3">Delete</button>
+
+
+                                
                             <div class="text-end">
                                 
-                                <p class="text-urple fw-bold"><span class="badge bg-danger me-2">-10%</span>$${product.data().productPrice}</p>
+                                <p class="text-urple fw-bold">$${product.data().productPrice}</p>
                                 <a to="#" class="btn outline-purple text-light px-2 me-2" style="border-color:#555FFF">♡</a>
                                 <a href="/" class="btn btn-purple fw-bold px-2" id= ${product.id}>Buy Now</a></div>
                             </div>
