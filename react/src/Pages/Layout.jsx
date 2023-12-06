@@ -35,16 +35,14 @@ function Layout(){
                     </ul>
 
                 <form className="d-flex" role="search">
-                    {/* <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"> */}
                     <ul className="navbar-nav me-4 mb-2 mb-lg-0 bg-light">
                         <li className="nav-item">
-                            {/* <button className="nav-link text-light" href="#">🛒🛍️</button> temp pani, will find image */}
                             <button className="btn nav-link text-light bg-black rounded-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">🛍️</button>
 
                         </li>
                     </ul>
-                    <Link to="/signup"><button className="btn btn-outline-light fw-medium me-4 rounded-0" type="button">Sign Up</button></Link>
-                    <Link to="/login"><button className="btn btn-light text-black me-5 fw-medium rounded-0" type="button">Log In</button></Link>
+                    <Link to="/signup"><button className="btn outline-purple fw-medium me-4 rounded-0 text-white" type="button" style={{borderColor:"#555FFF"}}>Sign Up</button></Link>
+                    <Link to="/login"><button className="btn btn-purple text-white me-5 fw-medium rounded-0" type="button">Log In</button></Link>
                 </form>
                 </div>
             </div>

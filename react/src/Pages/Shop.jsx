@@ -42,7 +42,6 @@ function Shop(){
     onSnapshot(collection(db,"products"), snapshot => {
         document.querySelector("#productArea").innerHTML = "";
         snapshot.forEach(product =>{
-            let prodId = product.id;
             const addToCart = (currentProd) =>{
                 snapshot.forEach(product =>{
                     if(currentProd === product.id){
@@ -90,8 +89,8 @@ function Shop(){
                                             <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body d-flex justify-content-evenly align-items-center">
-                                            <div class="" style="min-height:">
-                                                <img src=${gpu} alt="cpu" />
+                                            <div class="" style="max-width:40%">
+                                                <img class="img-fluid" src=${product.data().imageUrl} alt="cpu" style="max-width:100%"/>
                                             </div>
                                             <div class="col p-5" style={{maxWidth:'50%'}}>
                                                 <h2 class = "mb-4" style="max-width:20ch">${product.data().productName}</h2>
@@ -128,14 +127,16 @@ function Shop(){
                         </div>
                     </div>
             `
+
             document.querySelector("#productArea").innerHTML += showProduct;
-            document.getElementById(${prodId}).addEventListener("click",(event)=>{
+        });
+        const buyButtons = document.querySelector(".btn-buy");
+        buyButtons.forEach((marbutton)=>{
+            marbutton.addEventListener("click",(event)=>{
                 // console.log(event.target.id)
                 addToCart(event.target.id);
             });
-            
-
-        });
+        })
     });
 
     return(
