@@ -6,7 +6,15 @@
     outline-color: #555FFF !important;
 }
 .nav-item:hover{
-    border-bottom: 4px solid #555FFF;
+    border-bottom: 2px solid #178582;
+}
+.outline-light:hover{
+    border-bottom: 2px solid #178582;
+
+}
+.footer-links:hover{
+    color: #178582 !important;
+    font-weight: bold;
 }
 
 .quality{
@@ -16,21 +24,23 @@
 }
 
 .btn-purple{
-    background-color: #555FFF !important;
+    /* background-color:  #6ACFC7 !important; */
+    background-color: #178582 !important;
+    /* background-color: #555FFF !important; */
     color: white !important;
 }
 .outline-purple:hover{
     /* background-color: white !important; */
-    color: #555FFF!important;
+    color: #178582!important;
 }
 .text-purple{
-    color: #555FFF !important;
+    color: #178582 !important;
 }
 .hero{
     background-image: url("../src/images/hero.jpg");
     background-size:cover;
     height: 100vh;
-    margin-top: -70px;
+
     background-repeat: no-repeat;
 }
 .rightQuality{

@@ -117,39 +117,39 @@ function Layout() {
                         </div>
                         <div className="col-2 d-flex flex-column">
                             <h5>About Us</h5>
-                            <Link>Products</Link>
-                            <Link>Services</Link>
-                            <Link>Contact Us</Link>
-                            <Link>FAQ</Link>
-                            <Link>Support</Link>
+                            <Link className="text-decoration-none text-light footer-links my-2">Products</Link>
+                            <Link className="text-decoration-none text-light footer-links my-2">Services</Link>
+                            <Link className="text-decoration-none text-light footer-links my-2">Contact Us</Link>
+                            <Link className="text-decoration-none text-light footer-links my-2">FAQ</Link>
+                            <Link className="text-decoration-none text-light footer-links my-2">Support</Link>
                         </div>
-                        <div className="col-2">
+                        <div className="col-2 d-flex flex-column">
                             <h5>Terms</h5>
-                            <p>Privacy</p>
-                            <p>Shipping</p>
-                            <p>Returns</p>
-                            <p>Warranty</p>
-                            <p>Blog</p>
+                            <Link className="text-decoration-none text-light footer-links my-2">Privacy</Link>
+                            <Link className="text-decoration-none text-light footer-links my-2">Shipping</Link>
+                            <Link className="text-decoration-none text-light footer-links my-2">Returns</Link>
+                            <Link className="text-decoration-none text-light footer-links my-2">Warranty</Link>
+                            <Link className="text-decoration-none text-light footer-links my-2">Blog</Link>
                         </div>
-                        <div className="col-2">
+                        <div className="col-2 d-flex flex-column">
                             <h5>Follow us on</h5>
-                            <p>Facebook</p>
-                            <p>Instagram</p>
-                            <p>Github</p>
-                            <p>LinkedIn</p>
-                            <p>Twitter</p>
+                            <Link className="text-decoration-none text-light footer-links my-2">Facebook</Link>
+                            <Link className="text-decoration-none text-light footer-links my-2">Instagram</Link>
+                            <Link className="text-decoration-none text-light footer-links my-2">Github</Link>
+                            <Link className="text-decoration-none text-light footer-links my-2">LinkedIn</Link>
+                            <Link className="text-decoration-none text-light footer-links my-2">Twitter</Link>
                         </div>
                         <div className="col-4">
                             <h5>Subscribe</h5>
                             <p>Join our mailing list for the latest updates and promotions.</p>
                             <div className="row">
                                 <div className="col-8">
-                                <input type="email" className="col-10" />
+                                <input type="email" className="col-10 form-control" placeholder="Enter your Email" />
                                 </div>
                                 <div className="col-4 mx-0">
                                     <Link className="btn btn-purple me-4 ms-0 form-control col-2 rounded-1 py-1">Send</Link>
                                 </div>
-                                <small style={{fontSize:"12px"}}>By subscribing, you agree to our Privacy Policy and consent to receive updates.</small>
+                                <small style={{fontSize:"12px"}} className="mt-2">By subscribing, you agree to our Privacy Policy and consent to receive updates.</small>
                             </div>
                         </div>
                     </div>
