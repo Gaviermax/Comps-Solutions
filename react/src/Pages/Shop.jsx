@@ -5,40 +5,48 @@ import cpu from "../images/cpu.webp";
 import gpu from "../images/gpu.png";
 import cpuCase from "../images/case.png";
 import ram from "../images/ram.png";
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-import { getFirestore, collection, onSnapshot} from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js'
+import { getFirestore, collection, onSnapshot, deleteDoc, doc} from 'firebase/firestore'
+import Layout from "./Layout";
+import { useEffect } from "react";
+import { auth } from "../config/firebase-config";
+import { onAuthStateChanged } from "firebase/auth";
 // import { getStorage} from "firebase/storage";
 
 
 function Shop(){
-    const [image,setImage] = useState(null);
-    
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
+   const [image, setImage] = useState(null);
+   const [isAdmin, setIsAdmin] = useState(false);
+   const [user, setUser] = useState(null);
 
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-        apiKey: "AIzaSyD1nO8GEMuUryXWwLIi92eEPf5QfNYNhJ8",
-        authDomain: "loginsignup-801b6.firebaseapp.com",
-        databaseURL: "https://loginsignup-801b6-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "loginsignup-801b6",
-        storageBucket: "loginsignup-801b6.appspot.com",
-        messagingSenderId: "409222316795",
-        appId: "1:409222316795:web:80c979400122d9e028665e",
-        measurementId: "G-TFTY28FEK6"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+   const db = getFirestore();
     // const storage = getStorage(app)
+  
+    useEffect(() => {
+      // Listen for changes in the authentication state
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        // Check if the user is logged in and has admin privileges
+        setIsAdmin(user && user.email === "admin@gmail.com");
+        setUser(user);
+      });
+  
+      // Clean up the subscription when the component unmounts
+      return () => unsubscribe();
+    }, []);
+
+    console.log("The value for isadmin is: " + isAdmin)
+    const deleteProduct = async (productId) => {
+        const confirmDelete = window.confirm("Are you sure you want to delete this product?")
+        if(confirmDelete){
+        try {
+            await deleteDoc(doc(db, 'products', productId));
+            alert('Product deleted successfully!');
+        } catch (error) {
+            console.error('Error deleting product: ', error);
+            alert('Failed to delete product. Please try again.');
+        }
+    }
+    };
     
-
-    
-
-
-
-
     onSnapshot(collection(db,"products"), snapshot => {
         document.querySelector("#productArea").innerHTML = "";
         snapshot.forEach(product =>{
@@ -64,16 +72,6 @@ function Shop(){
             }
 
             let showProduct = 
-
-            // `<tr>
-            //     <td>${booking.data().lastname}</td>
-            //     <td>${booking.data().firstname}</td>
-            //     <td>${booking.data().description}</td>
-            //     <td>${booking.data().contact}</td>
-            //     <td>${booking.data().email}</td>
-            //     <td>${booking.data().bookingType}</td>
-            //     <td>${booking.data().date}</td>
-            // </tr>`;
             `
             <div class="col card-deck">
                         <div class="card bg-dark text-light" data-aos="zoom-out-right">
@@ -120,11 +118,9 @@ function Shop(){
 
                                 <button class="btn btn-light px-2 py-0"data-bs-toggle="modal" data-bs-target=#${product.data().productName}>⇱</button>
 
-                                <button class="badge btn bg-danger me-2 mt-3">Delete</button>
+                                ${isAdmin ? `<button class="badge btn bg-danger me-2 mt-3 btn-delete" onClick>Delete</button>` : ''}
 
-
-                                
-                            <div class="text-end">
+                                <div class="text-end">
                                 
                                 <p class="text-urple fw-bold">$${product.data().productPrice}</p>
                                 <a to="#" class="btn outline-purple text-light px-2 me-2" style="border-color:#555FFF">♡</a>
@@ -136,13 +132,18 @@ function Shop(){
 
             document.querySelector("#productArea").innerHTML += showProduct;
         });
-        const buyButtons = document.querySelector(".btn-buy");
-        buyButtons.forEach((marbutton)=>{
-            marbutton.addEventListener("click",(event)=>{
-                // console.log(event.target.id)
-                addToCart(event.target.id);
-            });
-        })
+        const deleteButtons = document.querySelectorAll(".btn-delete");
+        deleteButtons.forEach((button) => {
+            button.addEventListener("click", (event) => {
+                // Access the product id from the button's data attribute or other source
+                console.log("Delete button clicked");
+                const productId = button.getAttribute("id");
+                deleteProduct(productId);
+            
+            
+            })
+            
+        });
     });
 
     return(
@@ -178,107 +179,6 @@ function Shop(){
             <div className="container py-5">
                 <h1 className="text-light badge bg-success">Best Collections</h1>
                 <div className="row row-cols-1 row-cols-md-4 g-4" id="productArea">
-                     {/* <div className="col">
-                        <div className="card bg-dark text-light" data-aos="zoom-out-right">
-                            <Link><img src={cpu} className="card-img-top" alt="..."/></Link>
-
-                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-fullscreen text-light">
-                                    <div class="container mx-5 mb-5 modal-content bg-dark">
-                                        <div class="modal-header" data-bs-theme="dark">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Ryzen 5 7000 Series</h1>
-                                            <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body d-flex justify-content-evenly align-items-center">
-                                            <div className="">
-                                                <img src={gpu} alt="cpu" />
-                                            </div>
-                                            <div className="col p-5" style={{maxWidth:'50%'}}>
-                                                <h2 class = "mb-4">Product Name</h2>
-                                                <p class = "mb-4 text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas ratione possimus perferendis quos iusto adipisci consequuntur aliquid quod, totam tempora iste quo dicta deleniti cum ducimus incidunt facilis autem sint.</p>
-                                                <h4>Product price <span class="badge bg-danger">less</span></h4>
-                                                <div className="buttonGroup row mt-5">
-                                                    <div class="btn-group col-4" role="group" aria-label="Basic example">
-                                                        <button type="button" class="btn outline-purple text-purple" style={{borderColor:"#555FFF"}}>-</button>
-                                                        <button type="button" class="btn disabled btn-purple text-light" style={{borderColor:"#555FFF"}}>0</button>
-                                                        <button type="button" class="btn outline-purple text-purple" style={{borderColor:"#555FFF"}}>+</button>
-                                                    </div>
-                                                    <br />
-                                                    <div className="col-8 d-flex justify-content-end">
-                                                        <a href="#" class="btn btn-purple mx-auto px-5 w-50" onClick={(e)=>(
-                                                            e.querySelector("")
-                                                        )}>Buy Now</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="card-body">
-                                <h5 className="card-title">Ryzen 5</h5>
-                                <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <button className="btn btn-light px-2 py-0"data-bs-toggle="modal" data-bs-target="#staticBackdrop">⇱</button>
-                            <div className="text-end">
-                                
-                                <p className="text-urple fw-bold"><span className="badge bg-danger me-2">-10%</span>$499</p>
-                                <Link to="#" className="btn outline-purple text-light px-2 me-2" style={{borderColor:"#555FFF",}}>♡</Link>
-                                <a href="#" className="btn btn-purple fw-bold px-2">Buy Now</a></div>
-                                <p className="card-text"><small className="text-purple">Available in stock</small></p>
-                            </div>
-                        </div>
-                    </div> */}
-
-                    {/* <div className="col">
-                        <div className="card bg-dark text-light" data-aos="zoom-out-right">
-                            <img src={gpu} className="card-img-top" alt="..."/>
-                            <div className="card-body">
-                                <h5 className="card-title">Mitsubishi Lancer</h5>
-                                <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <button className="btn btn-light px-2 py-0"data-bs-toggle="modal" data-bs-target="#staticBackdrop">⇱</button>
-                            <div className="text-end">
-                                <p className="text-urple fw-bold"><span className="badge bg-danger me-2">-10%</span>$199</p>
-                                <Link to="#" className="btn text-light outline-purple px-2 me-2" style={{borderColor:"#555FFF",}}>♡</Link>
-                                <a href="#" className="btn btn-purple fw-bold px-2">Buy Now</a></div>
-                                <p className="card-text"><small className="text-purple">Available in stock</small></p>
-                            </div>
-                        </div>
-                     </div> */}
-
-                   {/* <div className="col">
-                        <div className="card bg-dark text-light" data-aos="zoom-out-right">
-                            <img src={cpuCase} className="card-img-top" alt="..."/>
-                            <div className="card-body">
-                                <h5 className="card-title">Mitsubishi Lancer</h5>
-                                <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <button className="btn btn-light px-2 py-0"data-bs-toggle="modal" data-bs-target="#staticBackdrop">⇱</button>
-                            <div className="text-end">
-                                <p className="text-urple fw-bold"><span className="badge bg-danger me-2">-10%</span>$19</p>
-                                <Link to="#" className="btn text-light outline-purple px-2 me-2" style={{borderColor:"#555FFF",}}>♡</Link>
-                                <a href="#" className="btn btn-purple fw-bold px-2">Buy Now</a></div>
-                                <p className="card-text"><small className="text-purple">Available in stock</small></p>
-                            </div>
-                        </div>
-                     </div>
-                    
-                    <div className="col">
-                        <div className="card bg-dark text-light" data-aos="zoom-out-right">
-                            <img src={ram} className="card-img-top" alt="..."/>
-                            <div className="card-body">
-                                <h5 className="card-title">Mitsubishi Lancer</h5>
-                                <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <button className="btn btn-light px-2 py-0"data-bs-toggle="modal" data-bs-target="#staticBackdrop">⇱</button>
-                            <div className="text-end">
-                                <p className="text-urple fw-bold"><span className="badge bg-danger me-2">-10%</span>$29</p>
-                                <Link to="#" className="btn text-light outline-purple px-2 me-2" style={{borderColor:"#555FFF",}}>♡</Link>
-                                <a href="#" className="btn btn-purple fw-bold px-2">Buy Now</a></div>
-                                <p className="card-text"><small className="text-purple">Available in stock</small></p>
-                            </div>
-                        </div>
-                     </div> */}
-                    
                     
                 </div>
             </div>
