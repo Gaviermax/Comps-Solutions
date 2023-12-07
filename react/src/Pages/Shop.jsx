@@ -118,7 +118,7 @@ function Shop(){
 
                                 <button class="btn btn-light px-2 py-0"data-bs-toggle="modal" data-bs-target=#${product.data().productName}>⇱</button>
 
-                                ${isAdmin ? `<button class="badge btn bg-danger me-2 mt-3 btn-delete" onClick>Delete</button>` : ''}
+                                ${isAdmin ? `<button class="badge btn bg-danger me-2 mt-3 btn-delete" data-id=${product.id} onClick>Delete</button>` : ''}
 
                                 <div class="text-end">
                                 
@@ -137,13 +137,19 @@ function Shop(){
             button.addEventListener("click", (event) => {
                 // Access the product id from the button's data attribute or other source
                 console.log("Delete button clicked");
-                const productId = button.getAttribute("id");
-                deleteProduct(productId);
-            
-            
-            })
-            
+        
+                // Ensure you're accessing the correct attribute, for example, 'data-id'
+                const productId = button.getAttribute("data-id");
+        
+                // Check if productId is not null before calling deleteProduct
+                if (productId !== null) {
+                    deleteProduct(productId);
+                } else {
+                    console.error("Product ID not found on the delete button.");
+                }
+            });
         });
+        
     });
 
     return(
