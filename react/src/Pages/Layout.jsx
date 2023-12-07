@@ -116,7 +116,7 @@ function Layout() {
                             <h5>logo</h5>
                         </div>
                         <div className="col-2 d-flex flex-column">
-                            <h5>About Us</h5>
+                            <h5 className="fw-bold ">About Us</h5>
                             <Link className="text-decoration-none text-light footer-links my-2">Products</Link>
                             <Link className="text-decoration-none text-light footer-links my-2">Services</Link>
                             <Link className="text-decoration-none text-light footer-links my-2">Contact Us</Link>
@@ -124,7 +124,7 @@ function Layout() {
                             <Link className="text-decoration-none text-light footer-links my-2">Support</Link>
                         </div>
                         <div className="col-2 d-flex flex-column">
-                            <h5>Terms</h5>
+                            <h5 className="fw-bold ">Terms</h5>
                             <Link className="text-decoration-none text-light footer-links my-2">Privacy</Link>
                             <Link className="text-decoration-none text-light footer-links my-2">Shipping</Link>
                             <Link className="text-decoration-none text-light footer-links my-2">Returns</Link>
@@ -132,7 +132,7 @@ function Layout() {
                             <Link className="text-decoration-none text-light footer-links my-2">Blog</Link>
                         </div>
                         <div className="col-2 d-flex flex-column">
-                            <h5>Follow us on</h5>
+                            <h5 className="fw-bold ">Follow us on</h5>
                             <Link className="text-decoration-none text-light footer-links my-2">Facebook</Link>
                             <Link className="text-decoration-none text-light footer-links my-2">Instagram</Link>
                             <Link className="text-decoration-none text-light footer-links my-2">Github</Link>
@@ -140,7 +140,7 @@ function Layout() {
                             <Link className="text-decoration-none text-light footer-links my-2">Twitter</Link>
                         </div>
                         <div className="col-4">
-                            <h5>Subscribe</h5>
+                            <h5 className="fw-bold ">Subscribe</h5>
                             <p>Join our mailing list for the latest updates and promotions.</p>
                             <div className="row">
                                 <div className="col-8">

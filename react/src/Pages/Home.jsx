@@ -42,6 +42,7 @@ function Home() {
             <h1 style={{ maxWidth: "30ch"}} className="quality text-light">
               <span className="" style={{borderTop:"4px solid #178582"}}>Most Searched </span>Computer Parts
             </h1>
+
             <div className="container-fluid cardArea d-flex flew-column justify-content-between align-items-between"style={{ width: "100%" }}>
                 <div className="text-center my-5 py-0" style={{ width: "25rem" }}>
                     <div className="card-body py-5 d-flex flex-column">
@@ -91,6 +92,7 @@ function Home() {
                 </div>
             </div>
           </div>
+
           <div className="container-fluid bg-light text-dark">
             <div className="container d-flex flew-col bg-light">
               <div className="left container m-5 py-4">
@@ -133,7 +135,51 @@ function Home() {
 
               <Link to="about" className="btn btn-purple w-25">Learn More</Link>
           </div>
-          <div className="accordion p-5 m-5 pb-1 bg-black" id="accordionExample">
+
+          <div className="container-fluid bg-white">
+                <div className="container pb-5">
+                    <div className="titleArea text-center pt-3">
+                        <h1 className="text-purple fw-bold mt-5">Our Services</h1>
+                        <p className="text-secondary">Services for our customers to inquire</p>
+                    </div>
+                    <div className="cardArea row">
+                        <div class="row row-cols-1 row-cols-md-3 g-4">
+                            <div class="col-4">
+                                <div class="card bg-dark">
+                                    <img src="../src/images/repair.webp" alt="" className="card-img-top"/>
+                                    <div class="card-body text-white p-4">
+                                        <h5 class="card-title text-purple">Computer Repairs</h5>
+                                        <p class="card-text">Our repair services encompass a wide range of hardware and software issues, aiming to get your device back to optimal functionality. We specialize in diagnosing and fixing various computer problems, including hardware malfunctions, software glitches, system crashes, and more.</p>
+                                        <Link className="text-decoration-none fw-bold text-purple" style={{letterSpacing:"1px"}}>→ More Info</Link>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="card bg-dark">
+                                    <img className="card-img-top" src="../src/images/buildNew1.jpg" alt="" style={{Height:"auto"}}/>
+                                    <div class="card-body text-light p-4">
+                                        <h5 class="card-title text-purple">Computer Repairs</h5>
+                                        <p class="card-text">Our repair services encompass a wide range of hardware and software issues, aiming to get your device back to optimal functionality. We specialize in diagnosing and fixing various computer problems, including hardware malfunctions, software glitches, system crashes, and more.</p>
+                                        <Link className="text-decoration-none fw-bold text-purple" style={{letterSpacing:"1px"}}>→ More Info</Link>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="card bg-dark">
+                                    <img src="../src/images/upgrade.jpg" alt="" className="card-img-top"/>
+                                    <div class="card-body text-white p-4">
+                                        <h5 class="card-title text-purple">Computer Repairs</h5>
+                                        <p class="card-text">Our repair services encompass a wide range of hardware and software issues, aiming to get your device back to optimal functionality. We specialize in diagnosing and fixing various computer problems, including hardware malfunctions, software glitches, system crashes, and more.</p>
+                                        <Link className="text-decoration-none fw-bold text-purple" style={{letterSpacing:"1px"}}>→ More Info</Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          </div>
+
+          <div className="accordion p-5 m-5 pb-1" id="accordionExample">
             <div className="topFaq d-flex flex-column justify-content-center align-items-center">
                 <h1 className="text-center fw-bold text-purple fs-1">FAQ</h1>
                 <h3 className="text-center pb-4" >Frequently Asked Questions</h3>
