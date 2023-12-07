@@ -35,8 +35,8 @@ function Layout() {
 
     return(
         <>
-             <nav className="navbar navbar-expand-lg bg-black shadow sticky-top">
-                <div className="container-fluid">
+             <nav className="navbar navbar-expand-lg bg-black shadow sticky-top fw-bold py-3">
+                <div className="container">
 
                     <Link to="/" className="navbar-brand fw-bold text-light">COMPS</Link>
                     {/* burger menu for mobile view */}
@@ -69,6 +69,7 @@ function Layout() {
                     )}
                     </ul>
 
+
                 <form className="d-flex" role="search">
                     <ul className="navbar-nav me-4 mb-2 mb-lg-0 bg-light">
                         <li className="nav-item">
@@ -90,12 +91,12 @@ function Layout() {
                     ) : (
                     <>
                         <Link to="/signup">
-                        <button className="btn btn-outline-light fw-medium me-4 rounded-0" type="button">
+                        <button className="btn outline-purple bg-* text-light fw-bold me-4 rounded-2" type="button" style={{borderCoor:"#555FFF"}}>
                             Sign Up
                         </button>
                         </Link>
                         <Link to="/login">
-                        <button className="btn btn-light text-black me-5 fw-medium rounded-0" type="button">
+                        <button className="btn btn-purple text-white me-5 fw-bold rounded-2" type="button">
                             Log In
                         </button>
                         </Link>
@@ -107,6 +108,57 @@ function Layout() {
             </div>
             </nav>
             <Outlet />
+
+            <footer className="bg-black text-white py-5">
+                <div className="container py-5">
+                    <div className="row mb-3">
+                        <div className="col-2">
+                            <h5>logo</h5>
+                        </div>
+                        <div className="col-2 d-flex flex-column">
+                            <h5>About Us</h5>
+                            <Link>Products</Link>
+                            <Link>Services</Link>
+                            <Link>Contact Us</Link>
+                            <Link>FAQ</Link>
+                            <Link>Support</Link>
+                        </div>
+                        <div className="col-2">
+                            <h5>Terms</h5>
+                            <p>Privacy</p>
+                            <p>Shipping</p>
+                            <p>Returns</p>
+                            <p>Warranty</p>
+                            <p>Blog</p>
+                        </div>
+                        <div className="col-2">
+                            <h5>Follow us on</h5>
+                            <p>Facebook</p>
+                            <p>Instagram</p>
+                            <p>Github</p>
+                            <p>LinkedIn</p>
+                            <p>Twitter</p>
+                        </div>
+                        <div className="col-4">
+                            <h5>Subscribe</h5>
+                            <p>Join our mailing list for the latest updates and promotions.</p>
+                            <div className="row">
+                                <div className="col-8">
+                                <input type="email" className="col-10" />
+                                </div>
+                                <div className="col-4 mx-0">
+                                    <Link className="btn btn-purple me-4 ms-0 form-control col-2 rounded-1 py-1">Send</Link>
+                                </div>
+                                <small style={{fontSize:"12px"}}>By subscribing, you agree to our Privacy Policy and consent to receive updates.</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="copyright" style={{borderTop:"1px solid white"}}>
+                        <p className="text-center mt-3">@2023 CompSolutions. All rights reserved.</p>
+                    </div>
+                </div>
+            </footer>
         </>
     )
 }
