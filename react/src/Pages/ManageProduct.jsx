@@ -10,59 +10,59 @@ function ManageProduct() {
   const [loading, setLoading] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
 
-  const [productImgFile, setProductImgFile] = useState(null);
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-  
+
     if (file) {
-      setProductImgFile(file);
-  
       const reader = new FileReader();
       reader.onloadend = () => {
         setImagePreview(reader.result);
       };
       reader.readAsDataURL(file);
     } else {
-      setProductImgFile(null);
       setImagePreview(null);
     }
   };
 
   const submitProduct = async (e) => {
     const confirmAdd = window.confirm("Complete product addition?");
-  
+    
     if (confirmAdd) {
       e.preventDefault();
-  
+    
       try {
         setLoading(true);
         const productName = document.getElementById('productName').value;
         const productPrice = parseFloat(document.getElementById('productPrice').value);
         const stocks = parseInt(document.getElementById('stocks').value);
         const productDescription = document.getElementById('productDescription').value;
-  
+    
+        // Extract the file from the input
+        const fileInput = document.getElementById('productImg');
+        const file = fileInput.files[0];
+    
         // Check if a product with the same name already exists
         const productQuery = collection(db, 'products');
         const matchingProduct = await getDocs(query(productQuery, where('productName', '==', productName)));
-  
+    
         if (matchingProduct.size > 0) {
           // If the product already exists, update its stocks
           const existingProduct = matchingProduct.docs[0];
           const existingStocks = existingProduct.data().stocks;
           const updatedStocks = existingStocks + stocks;
-  
+    
           await updateDoc(doc(db, 'products', existingProduct.id), {
             stocks: updatedStocks,
             timestamp: serverTimestamp(),
           });
-  
+    
           alert(`Product "${productName}" already exists. Stocks updated successfully!`);
         } else {
           // If the product doesn't exist, add a new product
           const storageRef = ref(storage, `productImages/${productName}-${Date.now()}`);
-          await uploadBytes(storageRef, productImgFile);
+          await uploadBytes(storageRef, file); // Use file directly here
           const imageUrl = await getDownloadURL(storageRef);
-  
+    
           await addDoc(collection(db, 'products'), {
             productName,
             productPrice,
@@ -71,12 +71,8 @@ function ManageProduct() {
             productDescription,
             timestamp: serverTimestamp(),
           });
-  
+    
           alert('Product added successfully!');
-          document.querySelector("#productName").value=""
-          document.querySelector("#productPrice").value=""
-          document.querySelector("#stocks").value=""
-          document.querySelector("#productDescription").value=""
         }
       } catch (error) {
         console.error('Error adding product: ', error);
@@ -121,7 +117,6 @@ function ManageProduct() {
             {imagePreview && (
               <img
                 src={imagePreview}
-                id="imgPreview"
                 alt="Image Preview"
                 className="img-fluid mb-3"
                 style={{ maxHeight: '150px' }}
