@@ -20,8 +20,8 @@ function Layout() {
             setUser(user);
 
             // If it's the initial render and the user is logged in, sign them out
-            if (initialRender && user) {
-                auth.signOut()
+            if (initialRender) {
+                signOut(auth);
                 setInitialRender(false);
             }
         });
