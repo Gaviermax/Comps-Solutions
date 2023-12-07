@@ -71,8 +71,10 @@ function ManageProduct() {
             productDescription,
             timestamp: serverTimestamp(),
           });
-    
+
+
           alert('Product added successfully!');
+          console.log(product.id)
         }
       } catch (error) {
         console.error('Error adding product: ', error);
@@ -82,6 +84,56 @@ function ManageProduct() {
       }
     }
   };
+
+  const editProduct = async (e) => {
+    const confirmEdit = window.confirm("Complete product edit?");
+    
+    if (confirmEdit) {
+      e.preventDefault();
+    
+      try {
+        setLoading(true);
+        const productId = document.getElementById('productid').value;
+        const newProductName = document.getElementById('newproductName').value;
+        const newProductPrice = parseFloat(document.getElementById('newproductPrice').value);
+        const newStocks = parseInt(document.getElementById('newstocks').value);
+        const newProductDescription = document.getElementById('newproductDescription').value;
+  
+        // Check if the product with the given ID exists
+        const productQuery = collection(db, 'products');
+        const productDoc = await getDocs(query(productQuery));
+  
+        // Find the document with the matching product ID
+        const matchingProduct = productDoc.docs.find(doc => doc.id === productId);
+  
+        if (!matchingProduct) {
+          alert(`Product with ID ${productId} not found.`);
+        } else {
+          // Product exists, update its details
+          const storageRef = ref(storage, `productImages/${newProductName}-${Date.now()}`);
+          const fileInput = document.getElementById('productImg');
+          const file = fileInput.files[0];
+          await uploadBytes(storageRef, file);
+  
+          await updateDoc(doc(db, 'products', matchingProduct.id), {
+            productName: newProductName,
+            productPrice: newProductPrice,
+            stocks: newStocks,
+            productDescription: newProductDescription,
+            timestamp: serverTimestamp(),
+          });
+  
+          alert(`Product with ID ${productId} edited successfully!`);
+        }
+      } catch (error) {
+        console.error('Error editing product: ', error);
+        alert('Failed to edit product. Please try again.');
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
+  
 
   return (
     <>
@@ -128,6 +180,37 @@ function ManageProduct() {
 
         </div>
       </div>
+
+      {/* this part is for the edit product*/}
+
+      <div className="bg-black d-flex justify-content-center align-items-center px-5 shadow" style={{ minHeight: '100vh' }}>
+
+      <div className="container shadow p-4 rounded mt- bg-light w-50">
+        <h1 className="text-center mt-3">Edit Product</h1>
+        <form action="#" id="productForm" onSubmit={editProduct}>
+
+          <label htmlFor="productid">Product ID:</label>
+          <input id="productid" type="text" className="form-control mb-3" placeholder="ID of product" required />
+
+          <label htmlFor="newproductName">New Product Name:</label>
+          <input id="newproductName" type="text" className="form-control mb-3" placeholder="Name of product" required />
+
+          <label htmlFor="newproductPrice">New Product Price:</label>
+          <input id="newproductPrice" type="number" className="form-control mb-3" required placeholder="Price per item" />
+
+          <label htmlFor="newstocks">New Number of Stocks:</label>
+          <input id="newstocks" type="number" className="form-control mb-3" required placeholder="Enter the number of available stocks" />
+
+          <label htmlFor="newproductDescription">New Product Description:</label>
+
+          <textarea id="newproductDescription" className="form-control mb-3" required />
+          
+          <button type="submit" className="btn btn-dark mt-3 px-4" disabled={loading}>{loading ? 'Editing Product...' : 'Edit Product'}</button>
+        </form>
+
+      </div>
+      </div>
+
     </>
   )
 }
