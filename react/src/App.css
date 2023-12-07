@@ -31,8 +31,11 @@
     color: white !important;
 }
 .outline-purple:hover{
-    /* background-color: white !important; */
-    color: #178582!important;
+    background-color: #178582 !important;
+    color: white !important;
+}
+.outline-main:hover{
+    color: #178582 !important;
 }
 .text-purple{
     color: #178582 !important;

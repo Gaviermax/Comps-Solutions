@@ -82,8 +82,9 @@ function Layout() {
                     <>
                         <button
                         onClick={handleSignOut}
-                        className="btn btn-outline-light fw-medium me-4 rounded-0"
+                        className="btn outline-main text-light fw-bold me-4 rounded-2"
                         type="button"
+                        style={{letterSpacing:"1px"}}
                         >
                         Sign Out
                         </button>
@@ -91,12 +92,12 @@ function Layout() {
                     ) : (
                     <>
                         <Link to="/signup">
-                        <button className="btn outline-purple bg-* text-light fw-bold me-4 rounded-2" type="button" style={{borderCoor:"#555FFF"}}>
+                        <button className="btn outline-main bg-* text-light fw-bold me-4 rounded-2" type="button" style={{borderCoor:"#555FFF"}}>
                             Sign Up
                         </button>
                         </Link>
                         <Link to="/login">
-                        <button className="btn btn-purple text-white me-5 fw-bold rounded-2" type="button">
+                        <button className="btn btn-purple text-white fw-bold rounded-2" type="button">
                             Log In
                         </button>
                         </Link>

@@ -28,7 +28,9 @@ const Contact = () => {
 
   return (
     <>
-      <BookingDisplay bookings={bookings} />
+      <body style={{minHeight:"100vh"}}>
+        <BookingDisplay bookings={bookings} />
+      </body>
     </>
   );
 };

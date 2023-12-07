@@ -27,13 +27,15 @@ function Home() {
                     <Link to="/shop" className="btn btn-purple me-4 fw-medium px-4 ">
                          Shop
                     </Link>
-              <button
-                className="btn outline-purple text-light fw-medium me-4"
-                type="button"
-                style={{border:"2px solid #178582"}}
-              >
-                Learn More
-              </button>
+              <Link to="/book">
+                  <button
+                    className="btn outline-purple text-light fw-medium me-4"
+                    type="button"
+                    style={{border:"2px solid #178582"}}
+                  >
+                    Learn More
+                  </button>
+              </Link>
             </div>
           </div>
           {/* end of hero */}
@@ -85,7 +87,7 @@ function Home() {
                     <p className="card-text py-3">
                     Storage devices, such as hard disk drives (HDDs) and solid-state drives (SSDs), store the computer's operating system, software applications, files, and data. HDDs use spinning magnetic disks to store data, while SSDs use flash memory, providing faster read and write speeds
                     </p>
-                    <Link href="#" className="btn btn-purple px-5 w-75">
+                    <Link to="" className="btn btn-purple px-5 w-75">
                         Learn More
                     </Link>
                     </div>
@@ -116,7 +118,7 @@ function Home() {
                     Knowledgeable Customer Support for Hassle-Free Shopping
                   </li>
                 </ul>
-                <Link href="#" className="btn btn-purple px-5">
+                <Link to="/shop" className="btn btn-purple px-5">
                   Shop Now
                 </Link>
               </div>
@@ -148,9 +150,10 @@ function Home() {
                                 <div class="card bg-dark">
                                     <img src="../src/images/repair.webp" alt="" className="card-img-top"/>
                                     <div class="card-body text-white p-4">
+                                        <h5><span className="badge text-bg-light my-2">Technology</span></h5>
                                         <h5 class="card-title text-purple">Computer Repairs</h5>
                                         <p class="card-text">Our repair services encompass a wide range of hardware and software issues, aiming to get your device back to optimal functionality. We specialize in diagnosing and fixing various computer problems, including hardware malfunctions, software glitches, system crashes, and more.</p>
-                                        <Link className="text-decoration-none fw-bold text-purple" style={{letterSpacing:"1px"}}>→ More Info</Link>
+                                        <Link to="#" className="text-decoration-none fw-bold text-purple" style={{letterSpacing:"1px"}}>→ More Info</Link>
                                     </div>
                                 </div>
                             </div>
@@ -158,9 +161,10 @@ function Home() {
                                 <div class="card bg-dark">
                                     <img className="card-img-top" src="../src/images/buildNew1.jpg" alt="" style={{Height:"auto"}}/>
                                     <div class="card-body text-light p-4">
+                                        <h5><span className="badge text-bg-light my-2">Hardware</span></h5>
                                         <h5 class="card-title text-purple">Computer Repairs</h5>
                                         <p class="card-text">Our repair services encompass a wide range of hardware and software issues, aiming to get your device back to optimal functionality. We specialize in diagnosing and fixing various computer problems, including hardware malfunctions, software glitches, system crashes, and more.</p>
-                                        <Link className="text-decoration-none fw-bold text-purple" style={{letterSpacing:"1px"}}>→ More Info</Link>
+                                        <Link to="#" className="text-decoration-none fw-bold text-purple" style={{letterSpacing:"1px"}}>→ More Info</Link>
                                     </div>
                                 </div>
                             </div>
@@ -168,9 +172,10 @@ function Home() {
                                 <div class="card bg-dark">
                                     <img src="../src/images/upgrade.jpg" alt="" className="card-img-top"/>
                                     <div class="card-body text-white p-4">
+                                        <h5><span className="badge text-bg-light my-2">Hardware</span></h5>
                                         <h5 class="card-title text-purple">Computer Repairs</h5>
                                         <p class="card-text">Our repair services encompass a wide range of hardware and software issues, aiming to get your device back to optimal functionality. We specialize in diagnosing and fixing various computer problems, including hardware malfunctions, software glitches, system crashes, and more.</p>
-                                        <Link className="text-decoration-none fw-bold text-purple" style={{letterSpacing:"1px"}}>→ More Info</Link>
+                                        <Link to="#" className="text-decoration-none fw-bold text-purple" style={{letterSpacing:"1px"}}>→ More Info</Link>
                                     </div>
                                 </div>
                             </div>
@@ -306,7 +311,7 @@ function Home() {
           </div>
             <div className="container-fluid bg-white text-dark d-flex flex-column justify-content-center align-items-center p-5">
                 <h2 className="text-center">Still have questions?</h2>
-                <Link to="/contact" className="text-center btn btn-purple fw-bold my-4" style={{width:'13%'}}>Contact Us!</Link>
+                <Link to="/book" target="_blank" className="text-center btn btn-purple fw-bold my-4" style={{width:'13%'}}>Contact Us!</Link>
             </div>
       </body>
     </>

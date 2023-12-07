@@ -83,7 +83,7 @@ export default function SignUp() {
       >
         <div className="container d-flex align-items-center justify-evenly shadow rounded px-5 pb-5 text-white">
           <div className="form p-3" style={{ width: "100%" }}>
-            <h2 className="mb-5 fw-bold" style={{ color: "#555FFF" }}>
+            <h2 className="mb-5 fw-bold" style={{ color: "#178582" }}>
               Comp<span className="text-white">Solution</span>
             </h2>
             <h1>Create an Account</h1>
@@ -95,7 +95,7 @@ export default function SignUp() {
                   style={{
                     textDecoration: "underline",
                     cursor: "pointer",
-                    color: "#555FFF",
+                    color: "#178582",
                   }}
                 >
                   Sign In
@@ -170,7 +170,7 @@ export default function SignUp() {
             </button>
           </div>
           <div className="desc" style={{ width: "100%" }}>
-            <h1 className="ms-3 fw-bold" style={{ color: "#555FFF" }}>
+            <h1 className="ms-3 fw-bold" style={{ color: "#178582" }}>
               Upgrade your{" "}
               <span className="text-white">
                 computer with high-quality parts

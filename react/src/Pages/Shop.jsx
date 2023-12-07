@@ -74,7 +74,7 @@ function Shop(){
             let showProduct = 
             `
             <div class="col card-deck">
-                        <div class="card bg-dark text-light" data-aos="zoom-out-right">
+                        <div class="card bg-dark shadow text-light" data-aos="zoom-out-right">
                             <Link><img src=${product.data().imageUrl} class="card-img-top img-fluid" alt="..."/></Link>
 
 
@@ -96,9 +96,9 @@ function Shop(){
                                                 <h4>$${product.data().productPrice}</h4>
                                                 <div class="buttonGroup row mt-5">
                                                     <div class="btn-group col-4" role="group" aria-label="Basic example">
-                                                        <button type="button" class="btn outline-purple text-purple" style="border-color:$555FFF">-</button>
-                                                        <button type="button" class="btn disabled btn-purple text-light" style="border-color:$555FFF">0</button>
-                                                        <button type="button" class="btn outline-purple text-purple" style="border-color:$555FFF">+</button>
+                                                        <button type="button" class="btn outline-purple text-purple" style="border-color:#178582">-</button>
+                                                        <input type="text" class="btn btn-purple text-white form-control w-10" style="border-color:#178582" placeholder="0"></input>
+                                                        <button type="button" class="btn outline-purple text-purple" style="border-color:#178582">+</button>
                                                     </div>
                                                     <br />
                                                     <div class="col-8 d-flex justify-content-end">
@@ -116,14 +116,14 @@ function Shop(){
                                 <h5 class="card-title">${product.data().productName}</h5>
                                 <p class="card-text">${product.data().productDescription}</p>
 
-                                <button class="btn btn-light px-2 py-0"data-bs-toggle="modal" data-bs-target=#${product.data().productName}>⇱</button>
+                                <button class="btn btn-light text-purple px-2 py-0"data-bs-toggle="modal" data-bs-target=#${product.data().productName}>⇱</button>
 
                                 ${isAdmin ? `<button class="badge btn bg-danger me-2 mt-3 btn-delete" data-id=${product.id} onClick>Delete</button>` : ''}
 
                                 <div class="text-end">
                                 
                                 <p class="text-urple fw-bold">$${product.data().productPrice}</p>
-                                <a to="#" class="btn outline-purple text-light px-2 me-2" style="border-color:#555FFF">♡</a>
+                                <a to="#" class="btn outline-purple text-light px-2 me-2" style="border-color:#178582">♡</a>
                                 <a href="#" class="btn btn-purple fw-bold px-2 btn-buy" id= ${product.id} onClick>Buy Now</a></div>
                             </div>
                         </div>
@@ -154,7 +154,7 @@ function Shop(){
 
     return(
 
-        <body className="bg-black" style={{minHeight:"100vh"}}>
+        <body className="bg-white" style={{minHeight:"100vh"}}>
             {/* add to cart modal */}
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
@@ -175,9 +175,7 @@ function Shop(){
             </div>
 
             <div className="container py-3">
-                <h1 className="mb-5 fw-bold text-center" style={{
-                    color: 'white'
-                }}>Search Product</h1>
+                <h1 className="mb-5 fw-bold text-center text-purple">Search Product</h1>
                 <input id="search-bar" className="form-control me-2 mb-3 rounded-pill " type="search" placeholder="🔍 Search for item" aria-label="Search" />
             </div>
 
