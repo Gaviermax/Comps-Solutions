@@ -72,9 +72,7 @@ function ManageProduct() {
             timestamp: serverTimestamp(),
           });
 
-
           alert('Product added successfully!');
-          console.log(product.id)
         }
       } catch (error) {
         console.error('Error adding product: ', error);
