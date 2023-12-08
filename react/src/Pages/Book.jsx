@@ -174,6 +174,8 @@ function Book() {
                         <label htmlFor="date">Date:</label>
                         <input id="date" type="date" className="form-control mb-3" required min={minDate}/>
 
+                        <label htmlFor="description">Leave Feedback (optional)</label>
+                        <input id="feedback" type="text" class="form-control mb-3" placeholder="Input feedback" />
 
                         <button type="submit" class="btn btn-dark mt-3 px-4" onclick="submit">Book</button>
                     </form>
