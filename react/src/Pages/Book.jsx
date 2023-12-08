@@ -105,9 +105,9 @@ function Book() {
 
     return(
         <>
-            <div className="bg-black d-flex justify-content-center align-items-center px-5 shadow" style={{minHeight:'100vh'}}>
-                <div className="container leftDescription text-light px-5">
-                    <h1 className="mb-4"> <span style={{borderBottom:'5px solid #555FFF'}}>Booking Form</span></h1>
+            <div className="bg-white d-flex justify-content-center align-items-center px-5 shadow" style={{minHeight:'100vh'}}>
+                <div className="container leftDescription text-black px-5">
+                    <h1 className="mb-4"> <span style={{borderBottom:'5px solid #178582'}}>Booking Form</span></h1>
                     <p className="fs-4">Start the first step for building your dream PC by filling out the form.</p>
                     <br />
                     <p className="fs-4">After submitting the application form, we will be reaching out to you via email address or phone number for the next steps.</p>

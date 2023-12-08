@@ -135,7 +135,7 @@ function ManageProduct() {
 
   return (
     <>
-      <div className="bg-black d-flex justify-content-center align-items-center px-5 shadow" style={{ minHeight: '100vh' }}>
+      <div className="bg-white rounded-2 d-flex justify-content-center align-items-center px-5 shadow" style={{ minHeight: '100vh' }}>
 
         <div className="container shadow p-4 rounded mt- bg-light w-50">
           <h1 className="text-center mt-3">Add Products</h1>
