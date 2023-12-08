@@ -112,15 +112,33 @@ function ManageProduct() {
           const storageRef = ref(storage, `productImages/${newProductName}-${Date.now()}`);
           const fileInput = document.getElementById('productImg');
           const file = fileInput.files[0];
-          await uploadBytes(storageRef, file);
-  
-          await updateDoc(doc(db, 'products', matchingProduct.id), {
-            productName: newProductName,
-            productPrice: newProductPrice,
-            stocks: newStocks,
-            productDescription: newProductDescription,
+          
+          if (file) {
+            // If a new image is provided, update it
+            await uploadBytes(storageRef, file);
+          }
+          
+          const updateData = {
             timestamp: serverTimestamp(),
-          });
+          };
+  
+          if (newProductName !== "") {
+            updateData.productName = newProductName;
+          }
+  
+          if (!isNaN(newProductPrice)) {
+            updateData.productPrice = newProductPrice;
+          }
+  
+          if (!isNaN(newStocks)) {
+            updateData.stocks = newStocks;
+          }
+  
+          if (newProductDescription !== "") {
+            updateData.productDescription = newProductDescription;
+          }
+  
+          await updateDoc(doc(db, 'products', matchingProduct.id), updateData);
   
           alert(`Product with ID ${productId} edited successfully!`);
         }
@@ -132,6 +150,7 @@ function ManageProduct() {
       }
     }
   };
+  
   
 
   return (
@@ -181,16 +200,16 @@ function ManageProduct() {
               <label htmlFor="productid">Product ID:</label>
               <input id="productid" type="text" className="form-control mb-3" placeholder="ID of product" required />
               <label htmlFor="newproductName">New Product Name:</label>
-              <input id="newproductName" type="text" className="form-control mb-3" placeholder="Name of product" required />
+              <input id="newproductName" type="text" className="form-control mb-3" placeholder="Name of product"/>
               <label htmlFor="newproductPrice">New Product Price:</label>
-              <input id="newproductPrice" type="text" className="form-control mb-3" required placeholder="Price per item" pattern="[0-9]+(\.[0-9]{1,2})?"
+              <input id="newproductPrice" type="text" className="form-control mb-3" placeholder="Price per item" pattern="[0-9]+(\.[0-9]{1,2})?"
               title="Enter a valid decimal number (up to 2 decimal places)"
               inputMode="numeric"/>
 
               <label htmlFor="newstocks">New Number of Stocks:</label>
-              <input id="newstocks" type="number" className="form-control mb-3" required placeholder="Enter the number of available stocks" />
+              <input id="newstocks" type="number" className="form-control mb-3" placeholder="Enter the number of available stocks" />
               <label htmlFor="newproductDescription">New Product Description:</label>
-              <textarea id="newproductDescription" className="form-control mb-3" required />
+              <textarea id="newproductDescription" className="form-control mb-3" />
           
               <button type="submit" className="btn btn-dark mt-3 px-4" disabled={loading2}>{loading2 ? 'Editing Product...' : 'Edit Product'}</button>
             </form>
