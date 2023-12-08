@@ -20,8 +20,8 @@
     color: white !important;
 }
 .outline-purple:hover{
-    background-color: #555FFF !important;
-    color: white !important;
+    /* background-color: white !important; */
+    color: #555FFF!important;
 }
 .text-purple{
     color: #555FFF !important;
