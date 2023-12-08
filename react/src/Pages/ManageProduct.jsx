@@ -135,79 +135,62 @@ function ManageProduct() {
 
   return (
     <>
-      <div className="bg-white rounded-2 d-flex justify-content-center align-items-center px-5 shadow" style={{ minHeight: '100vh' }}>
+        <div className="bg-white rounded-2 d-flex justify-content-between align-items-center px-0 shadow" style={{ minHeight: '100vh' }}>
 
-        <div className="container shadow p-4 rounded mt- bg-light w-50">
-          <h1 className="text-center mt-3">Add Products</h1>
-          <form action="#" id="productForm" onSubmit={submitProduct}>
-
-            <label htmlFor="productName">Product Name:</label>
-            <input id="productName" type="text" className="form-control mb-3" placeholder="Name of product" required />
-
-            <label htmlFor="productPrice">Product Price:</label>
-            <input id="productPrice" type="number" className="form-control mb-3" required placeholder="Price per item" />
-
-            <label htmlFor="stocks">Number of Stocks:</label>
-            <input id="stocks" type="number" className="form-control mb-3" required placeholder="Enter the number of available stocks" />
-
-            <label htmlFor="productDescription">Product Description:</label>
-
-            <textarea id="productDescription" className="form-control mb-3" required />
-            
-            <label htmlFor="productImg">Choose Image File:</label>
-            <input
-              id="productImg"
-              type="file"
-              className="form-control mb-3"
-              accept="image/png, image/jpeg"
-              onChange={handleImageChange}
-              required
-            />
-
-            {imagePreview && (
-              <img
-                src={imagePreview}
-                alt="Image Preview"
-                className="img-fluid mb-3"
-                style={{ maxHeight: '150px' }}
-              />
-            )}
-            <br></br>
-            <button type="submit" className="btn btn-dark mt-3 px-4" disabled={loading}>{loading ? 'Adding Product...' : 'Add Product'}</button>
-          </form>
-
-        </div>
-      </div>
-
-      {/* this part is for the edit product*/}
-
-      <div className="bg-black d-flex justify-content-center align-items-center px-5 shadow" style={{ minHeight: '100vh' }}>
-
-      <div className="container shadow p-4 rounded mt- bg-light w-50">
-        <h1 className="text-center mt-3">Edit Product</h1>
-        <form action="#" id="productForm" onSubmit={editProduct}>
-
-          <label htmlFor="productid">Product ID:</label>
-          <input id="productid" type="text" className="form-control mb-3" placeholder="ID of product" required />
-
-          <label htmlFor="newproductName">New Product Name:</label>
-          <input id="newproductName" type="text" className="form-control mb-3" placeholder="Name of product" required />
-
-          <label htmlFor="newproductPrice">New Product Price:</label>
-          <input id="newproductPrice" type="number" className="form-control mb-3" required placeholder="Price per item" />
-
-          <label htmlFor="newstocks">New Number of Stocks:</label>
-          <input id="newstocks" type="number" className="form-control mb-3" required placeholder="Enter the number of available stocks" />
-
-          <label htmlFor="newproductDescription">New Product Description:</label>
-
-          <textarea id="newproductDescription" className="form-control mb-3" required />
+          <div className="container-fluid shadow p-4 rounded bg-light" style={{width:"45%", height:"auto"}}>
+            <h1 className="text-center mt-3">Add Products</h1>
+              <form action="#" id="productForm" onSubmit={submitProduct}>
+                <label htmlFor="productName">Product Name:</label>
+                <input id="productName" type="text" className="form-control mb-3" placeholder="Name of product" required />
+                <label htmlFor="productPrice">Product Price:</label>
+                <input id="productPrice" type="number" className="form-control mb-3" required placeholder="Price per item" />
+                <label htmlFor="stocks">Number of Stocks:</label>
+                <input id="stocks" type="number" className="form-control mb-3" required placeholder="Enter the number of available stocks" />
+                <label htmlFor="productDescription">Product Description:</label>
+                <textarea id="productDescription" className="form-control mb-3" required />
           
-          <button type="submit" className="btn btn-dark mt-3 px-4" disabled={loading}>{loading ? 'Editing Product...' : 'Edit Product'}</button>
-        </form>
+                <label htmlFor="productImg">Choose Image File:</label>
+                <input
+                  id="productImg"
+                  type="file"
+                  className="form-control mb-3"
+                  accept="image/png, image/jpeg"
+                  onChange={handleImageChange}
+                  required
+                />
+                {imagePreview && (
+                  <img
+                    src={imagePreview}
+                    alt="Image Preview"
+                    className="img-fluid mb-3"
+                    style={{ maxHeight: '150px' }}
+                  />
+                )}
+                <br></br>
+                <button type="submit" className="btn btn-dark mt-3 px-4" disabled={loading}>{loading ? 'Adding Product...' : 'Add Product'}</button>
+              </form>
+          </div>
 
-      </div>
-      </div>
+          <div className="container shadow p-4 pb-5 rounded mt- bg-light" style={{width:"45%",height:"auto"}}>
+            <h1 className="text-center mt-3">Edit Product</h1>
+            <form action="#" id="productForm" onSubmit={editProduct}>
+              <label htmlFor="productid">Product ID:</label>
+              <input id="productid" type="text" className="form-control mb-3" placeholder="ID of product" required />
+              <label htmlFor="newproductName">New Product Name:</label>
+              <input id="newproductName" type="text" className="form-control mb-3" placeholder="Name of product" required />
+              <label htmlFor="newproductPrice">New Product Price:</label>
+              <input id="newproductPrice" type="number" className="form-control mb-3" required placeholder="Price per item" />
+              <label htmlFor="newstocks">New Number of Stocks:</label>
+              <input id="newstocks" type="number" className="form-control mb-3" required placeholder="Enter the number of available stocks" />
+              <label htmlFor="newproductDescription">New Product Description:</label>
+              <textarea id="newproductDescription" className="form-control mb-3" required />
+          
+              <button type="submit" className="btn btn-dark mt-3 px-4" disabled={loading}>{loading ? 'Editing Product...' : 'Edit Product'}</button>
+            </form>
+          </div>
+        </div>
+
+        {/* this part is for the edit product*/}
 
     </>
   )
