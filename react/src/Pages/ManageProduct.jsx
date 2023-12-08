@@ -8,6 +8,7 @@ function ManageProduct() {
   const db = getFirestore();
   const storage = getStorage();
   const [loading, setLoading] = useState(false);
+  const [loading2, setLoading2] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
 
   const handleImageChange = (e) => {
@@ -90,7 +91,7 @@ function ManageProduct() {
       e.preventDefault();
     
       try {
-        setLoading(true);
+        setLoading2(true);
         const productId = document.getElementById('productid').value;
         const newProductName = document.getElementById('newproductName').value;
         const newProductPrice = parseFloat(document.getElementById('newproductPrice').value);
@@ -127,7 +128,7 @@ function ManageProduct() {
         console.error('Error editing product: ', error);
         alert('Failed to edit product. Please try again.');
       } finally {
-        setLoading(false);
+        setLoading2(false);
       }
     }
   };
@@ -143,7 +144,10 @@ function ManageProduct() {
                 <label htmlFor="productName">Product Name:</label>
                 <input id="productName" type="text" className="form-control mb-3" placeholder="Name of product" required />
                 <label htmlFor="productPrice">Product Price:</label>
-                <input id="productPrice" type="number" className="form-control mb-3" required placeholder="Price per item" />
+                <input id="productPrice" type="text" className="form-control mb-3" required placeholder="Price per item" pattern="[0-9]+(\.[0-9]{1,2})?"
+              title="Enter a valid decimal number (up to 2 decimal places)"
+              inputMode="numeric"/>
+
                 <label htmlFor="stocks">Number of Stocks:</label>
                 <input id="stocks" type="number" className="form-control mb-3" required placeholder="Enter the number of available stocks" />
                 <label htmlFor="productDescription">Product Description:</label>
@@ -179,13 +183,16 @@ function ManageProduct() {
               <label htmlFor="newproductName">New Product Name:</label>
               <input id="newproductName" type="text" className="form-control mb-3" placeholder="Name of product" required />
               <label htmlFor="newproductPrice">New Product Price:</label>
-              <input id="newproductPrice" type="number" className="form-control mb-3" required placeholder="Price per item" />
+              <input id="newproductPrice" type="text" className="form-control mb-3" required placeholder="Price per item" pattern="[0-9]+(\.[0-9]{1,2})?"
+              title="Enter a valid decimal number (up to 2 decimal places)"
+              inputMode="numeric"/>
+
               <label htmlFor="newstocks">New Number of Stocks:</label>
               <input id="newstocks" type="number" className="form-control mb-3" required placeholder="Enter the number of available stocks" />
               <label htmlFor="newproductDescription">New Product Description:</label>
               <textarea id="newproductDescription" className="form-control mb-3" required />
           
-              <button type="submit" className="btn btn-dark mt-3 px-4" disabled={loading}>{loading ? 'Editing Product...' : 'Edit Product'}</button>
+              <button type="submit" className="btn btn-dark mt-3 px-4" disabled={loading2}>{loading2 ? 'Editing Product...' : 'Edit Product'}</button>
             </form>
           </div>
         </div>
