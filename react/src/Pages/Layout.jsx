@@ -1,27 +1,34 @@
 import { Outlet, Link } from "react-router-dom";
 import '../App.css';
-
+import React from "react";
 import { useEffect, useState } from "react";
 import { auth } from "../config/firebase-config";
 import { onAuthStateChanged } from "firebase/auth";
+import Shop from "./Shop";
 import { Button } from "bootstrap";
 
 function Layout() {
     const [isAdmin, setIsAdmin] = useState(false);
     const [user, setUser] = useState(null);
+    const [initialRender, setInitialRender] = useState(true);
   
     useEffect(() => {
-      // Listen for changes in the authentication state
-      const unsubscribe = onAuthStateChanged(auth, (user) => {
-        // Check if the user is logged in and has admin privileges
-        setIsAdmin(user && user.email === "admin@gmail.com");
-        setUser(user);
-      });
-  
-      // Clean up the subscription when the component unmounts
-      return () => unsubscribe();
-    }, []);
-  
+        // Listen for changes in the authentication state
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            // Check if the user is logged in and has admin privileges
+            setIsAdmin(user && user.email === "admin@gmail.com");
+            setUser(user);
+
+            // If it's the initial render and the user is logged in, sign them out
+            if (initialRender) {
+                signOut(auth);
+                setInitialRender(false);
+            }
+        });
+
+        // Clean up the subscription when the component unmounts
+        return () => unsubscribe();
+    }, [initialRender]);
     
     const handleSignOut = () => {
         // Ask for confirmation before signing out
@@ -30,13 +37,16 @@ function Layout() {
         if (confirmSignOut) {
         // Sign out the user
         auth.signOut();
+        window.location.reload();
         }
     };
 
     return(
         <>
+
              <nav className="navbar navbar-expand-lg bg-black shadow sticky-top fw-bold py-3">
                 <div className="container">
+
 
                     <Link to="/" className="navbar-brand fw-bold text-light">COMPS</Link>
                     {/* burger menu for mobile view */}
