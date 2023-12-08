@@ -46,38 +46,16 @@ function Shop(){
         }
     }
     };
-    
+
     onSnapshot(collection(db,"products"), snapshot => {
         document.querySelector("#productArea").innerHTML = "";
         snapshot.forEach(product =>{
-            const addToCart = (currentProd) =>{
-                snapshot.forEach(product =>{
-                    if(currentProd === product.id){
-                        let showCartItem =
-                        `
-                        <div className="row">
-                            <img src=${product.data().imageUrl} alt="" className="col-3 img-fluid rounded-3"/>
-                            <div className="col-7">
-                                <p className="col-">${product.data().productName}</p>
-                                <small className="text-secondary">1 x ${product.data().productPrice}</small>
-                            </div>
-                            <button type="button" class="btn-close col-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                            <hr className="mt-3"/>
-                        </div>
-                        `
-                        document.querySelector("#cartArea").innerHTML = "";
-                        document.querySelector("#cartArea").innerHTML += showCartItem;
-                    }
-                })
-            }
 
             let showProduct = 
             `
             <div class="col card-deck">
                         <div class="card bg-dark shadow text-light" data-aos="zoom-out-right">
                             <Link><img src=${product.data().imageUrl} class="card-img-top img-fluid" alt="..."/></Link>
-
-
 
                             <div class="modal fade" id=${product.data().productName} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-fullscreen text-light">
@@ -116,15 +94,16 @@ function Shop(){
                                 <h5 class="card-title">${product.data().productName}</h5>
                                 <p class="card-text">${product.data().productDescription}</p>
 
-                                <button class="btn btn-light text-purple px-2 py-0"data-bs-toggle="modal" data-bs-target=#${product.data().productName}>⇱</button>
+                                <button class="btn btn-light px-2 py-0"data-bs-toggle="modal" data-bs-target=#${product.data().productName}>⇱</button>
 
                                 ${isAdmin ? `<button class="badge btn bg-danger me-2 mt-3 btn-delete" data-id=${product.id} onClick>Delete</button>` : ''}
 
                                 <div class="text-end">
                                 
                                 <p class="text-urple fw-bold">$${product.data().productPrice}</p>
-                                <a to="#" class="btn outline-purple text-light px-2 me-2" style="border-color:#178582">♡</a>
-                                <a href="#" class="btn btn-purple fw-bold px-2 btn-buy" id= ${product.id} onClick>Buy Now</a></div>
+                                <a to="#" class="btn outline-purple text-light px-2 me-2" style="border-color:#555FFF">♡</a>
+                                <a class="btn btn-purple fw-bold px-2 btn-buy" id= ${product.id} onClick>Buy Now</a></div>
+
                             </div>
                         </div>
                     </div>
@@ -132,6 +111,36 @@ function Shop(){
 
             document.querySelector("#productArea").innerHTML += showProduct;
         });
+
+        const addToCart = (currentProd) => {
+            // Check if the product is already in the cart
+            const isProductInCart = Array.from(document.querySelectorAll("#cartArea .row"))
+                .some((cartItem) => cartItem.dataset.productId === currentProd);
+        
+            snapshot.forEach((product) => {
+                if (currentProd === product.id) {
+                    if (isProductInCart) {
+                        // Show alert if the product is already in the cart
+                        alert('This product is already in the cart!');
+                    } else {
+                        // Add the product to the cart
+                        let showCartItem = `
+                            <div class="row" data-product-id="${currentProd}">
+                                <img src=${product.data().imageUrl} alt="" class="col-3 img-fluid rounded-3" style="width: 97.25px; height: 73.25px;"/>
+                                <div class="col-7">
+                                    <p class="col-">${product.data().productName}</p>
+                                    <small class="text-secondary">1 x ${product.data().productPrice}</small>
+                                </div>
+                                <button type="button" class="btn-close col-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                <hr class="mt-3"/>
+                            </div>
+                        `;
+                        document.querySelector("#cartArea").innerHTML += showCartItem;
+                    }
+                }
+            });
+        };
+
         const deleteButtons = document.querySelectorAll(".btn-delete");
         deleteButtons.forEach((button) => {
             button.addEventListener("click", (event) => {
@@ -149,7 +158,18 @@ function Shop(){
                 }
             });
         });
-        
+
+        const buyButtons = document.querySelectorAll(".btn-buy");
+        buyButtons.forEach((buybutton) => {
+
+            buybutton.addEventListener("click", (event) => {
+
+                console.log("Buy button clicked");
+
+                const buyproductId = buybutton.getAttribute("id");
+                addToCart(buyproductId);
+            });
+        });
     });
 
     return(
