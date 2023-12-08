@@ -37,6 +37,7 @@ function Layout() {
         if (confirmSignOut) {
         // Sign out the user
         auth.signOut();
+        window.location.reload();
         }
     };
 
