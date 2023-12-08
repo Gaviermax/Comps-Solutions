@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
+import React, { useState, useEffect} from "react";
+import AOS from "aos";
+import "aos/dist/aos.css"
+
 
 function Home() {
+    useEffect(() => {
+        AOS.init();
+      }, []);
+    
   return (
     <>
         
@@ -41,7 +49,7 @@ function Home() {
           {/* end of hero */}
 
           <div className="container d-flex justify-content-evenly align-items-center flex-column text-center my-5" style={{ minHeight: "60vh" }}>
-            <h1 style={{ maxWidth: "30ch"}} className="quality text-light">
+            <h1 style={{ maxWidth: "30ch"}} className="quality text-light" data-aos="flip-left" >
               <span className="" style={{borderTop:"4px solid #178582"}}>Most Searched </span>Computer Parts
             </h1>
 

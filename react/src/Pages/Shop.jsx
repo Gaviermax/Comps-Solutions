@@ -174,7 +174,7 @@ function Shop(){
 
     return(
 
-        <body className="bg-white" style={{minHeight:"100vh"}}>
+        <body className="bg-black" style={{minHeight:"100vh"}}>
             {/* add to cart modal */}
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
