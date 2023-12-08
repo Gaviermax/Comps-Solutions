@@ -6,6 +6,9 @@ import { auth } from "../config/firebase-config";
 import { onAuthStateChanged } from "firebase/auth";
 import Shop from "./Shop";
 import { Button } from "bootstrap";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebook, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 
 function Layout() {
     const [isAdmin, setIsAdmin] = useState(false);
@@ -48,7 +51,11 @@ function Layout() {
                 <div className="container">
 
 
-                    <Link to="/" className="navbar-brand fw-bold text-light">COMPS</Link>
+                    <Link to="/" className="navbar-brand fw-bold text-purple">
+                        {/* <img src="../src/images/COMPSlogo.png" alt="Craigslist-logo" width="120" height="30" class="d-inline-block align-text-top"/> */}
+                        COMPS
+                    </Link>
+
                     {/* burger menu for mobile view */}
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                      <span className="navbar-toggler-icon"></span>
@@ -83,7 +90,9 @@ function Layout() {
                 <form className="d-flex" role="search">
                     <ul className="navbar-nav me-4 mb-2 mb-lg-0 bg-light">
                         <li className="nav-item">
-                            <button className="btn nav-link text-light bg-black rounded-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">🛍️</button>
+                            <button className="btn nav-link text-light bg-black rounded-0 fs-5 " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="cart">
+                                <FontAwesomeIcon icon={faCartPlus}/>
+                            </button>
 
                         </li>
                     </ul>
@@ -120,11 +129,11 @@ function Layout() {
             </nav>
             <Outlet />
 
-            <footer className="bg-black text-white py-5">
+            <footer className="bg-dark text-white py-5">
                 <div className="container py-5">
                     <div className="row mb-3">
                         <div className="col-2">
-                            <h5>logo</h5>
+                            <h2 className="text-purple fw-bold">COMPS</h2>
                         </div>
                         <div className="col-2 d-flex flex-column">
                             <h5 className="fw-bold ">About Us</h5>

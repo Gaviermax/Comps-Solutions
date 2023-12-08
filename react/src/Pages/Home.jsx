@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
+import React, { useState, useEffect} from "react";
+import AOS from "aos";
+import "aos/dist/aos.css"
+
 
 function Home() {
+    useEffect(() => {
+        AOS.init();
+      }, []);
+    
   return (
     <>
         
@@ -10,7 +18,7 @@ function Home() {
 
         <div className="hero container-fluid bg-secondar d-flex flex-column align-items-start justify-content-center g-5"
             style={{ minHeight: "95vh", backgroundColor: "#95969D" }}>
-            <div className="container text-light">
+            <div className="container text-light" data-aos="fade-right" data-aos-duration="1500">
               <h1 className="fw-bold mb-4" style={{ maxWidth: "25ch" }}>
                 <span>
                   Upgrade your</span> <br></br>computer{" "}
@@ -41,12 +49,12 @@ function Home() {
           {/* end of hero */}
 
           <div className="container d-flex justify-content-evenly align-items-center flex-column text-center my-5" style={{ minHeight: "60vh" }}>
-            <h1 style={{ maxWidth: "30ch"}} className="quality text-light">
+            <h1 style={{ maxWidth: "30ch"}} className="quality text-light" data-aos="zoom-out-down" data-aos-duration="700"  >
               <span className="" style={{borderTop:"4px solid #178582"}}>Most Searched </span>Computer Parts
             </h1>
 
             <div className="container-fluid cardArea d-flex flew-column justify-content-between align-items-between"style={{ width: "100%" }}>
-                <div className="text-center my-5 py-0" style={{ width: "25rem" }}>
+                <div className="text-center my-5 py-0" style={{ width: "25rem" }} data-aos="zoom-in-up" data-aos-duration="1000">
                     <div className="card-body py-5 d-flex flex-column">
                     <img className="img-fluid mx-auto" src="../src/images/ramIcon.png" alt="" style={{maxWidth:"15%"}}/>
                     <h5 className="card-title py-3">
@@ -61,7 +69,7 @@ function Home() {
                     </div>
                 </div>
 
-                <div className="text-center my-5 py-0" style={{ width: "25rem" }}>
+                <div className="text-center my-5 py-0" style={{ width: "25rem" }} data-aos="zoom-in-up" data-aos-duration="1000">
                     <div className="card-body py-5 text-center d-flex justify-content-evenly flex-column">
                         <img className="img-fluid mx-auto" src="../src/images/cpuIcon3.png" alt="" style={{maxWidth:"15%"}}/>
                         <h5 className="card-title py-3 text-center">
@@ -78,7 +86,7 @@ function Home() {
                 </div>
 
 
-                <div className="text-center my-5 py-0" style={{ width: "25rem" }}>
+                <div className="text-center my-5 py-0" style={{ width: "25rem" }} data-aos="zoom-in-up" data-aos-duration="1000">
                     <div className="card-body py-5">
                     <img className="img-fluid mx-auto" src="../src/images/storageIcon.png" alt="" style={{maxWidth:"15%"}}/>
                     <h5 className="card-title py-3">
@@ -97,7 +105,7 @@ function Home() {
 
           <div className="container-fluid bg-light text-dark">
             <div className="container d-flex flew-col bg-light">
-              <div className="left container m-5 py-4">
+              <div className="left container m-5 py-4" data-aos="fade-up-right" data-aos-duration="1500">
                 <p className="badge bg-success">Quality</p>
                 <h2
                   className="py-3 fw-bold"
@@ -122,13 +130,15 @@ function Home() {
                   Shop Now
                 </Link>
               </div>
-              <div className="rightQuality d-flex justify-content-center align-items-center bg-success my-5 p-0" style={{borderRadius:"0 200px 0 200px"}}>
+
+
+              <div className="rightQuality d-flex justify-content-center align-items-center bg-success my-5 p-0" style={{borderRadius:"0 200px 0 200px"}} data-aos="fade-up-left" data-aos-duration="1500">
                 <img className="" src="../images/quality.webp" alt="" style={{minWidth:"95vh"}}/>
               </div>
             </div>
           </div>
 
-          <div className="container my-5 py-5 d-flex flex-column justify-content-center align-items-center">
+          <div className="container my-5 py-5 d-flex flex-column justify-content-center align-items-center" data-aos="zoom-in-up" data-aos-duration="1500">
 
               <h1 className="text-center text-purple">OUR HISTORY</h1>
               <p className="text-center mx-auto my-5" style={{maxWidth:"100ch", lineHeight:"2em"}}>
@@ -146,7 +156,7 @@ function Home() {
                     </div>
                     <div className="cardArea row">
                         <div class="row row-cols-1 row-cols-md-3 g-4">
-                            <div class="col-4">
+                            <div class="col-4" data-aos="fade-up" data-aos-duration="1000">
                                 <div class="card bg-dark">
                                     <img src="../src/images/repair.webp" alt="" className="card-img-top"/>
                                     <div class="card-body text-white p-4">
@@ -157,7 +167,8 @@ function Home() {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-4">
+
+                            <div class="col-4" data-aos="fade-up" data-aos-duration="1000"  data-aos-delay="300">
                                 <div class="card bg-dark">
                                     <img className="card-img-top" src="../src/images/buildNew1.jpg" alt="" style={{Height:"auto"}}/>
                                     <div class="card-body text-light p-4">
@@ -168,7 +179,8 @@ function Home() {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-4">
+
+                            <div class="col-4" data-aos="fade-up" data-aos-duration="1000"  data-aos-delay="500">
                                 <div class="card bg-dark">
                                     <img src="../src/images/upgrade.jpg" alt="" className="card-img-top"/>
                                     <div class="card-body text-white p-4">
@@ -184,7 +196,7 @@ function Home() {
                 </div>
           </div>
 
-          <div className="accordion p-5 m-5 pb-1" id="accordionExample">
+          <div className="accordion p-5 m-5 pb-1" id="accordionExample" data-aos="fade-up" data-aos-duration="1000">
             <div className="topFaq d-flex flex-column justify-content-center align-items-center">
                 <h1 className="text-center fw-bold text-purple fs-1">FAQ</h1>
                 <h3 className="text-center pb-4" >Frequently Asked Questions</h3>
@@ -309,9 +321,11 @@ function Home() {
               </div>
             </div>
           </div>
-            <div className="container-fluid bg-white text-dark d-flex flex-column justify-content-center align-items-center p-5">
-                <h2 className="text-center">Still have questions?</h2>
-                <Link to="/book" target="_blank" className="text-center btn btn-purple fw-bold my-4" style={{width:'13%'}}>Contact Us!</Link>
+            <div className="container-fluid bg-white text-dark d-flexd flex-column justify-content-center align-items-center p-5">
+                <div className="container d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-duration="1000">
+                    <h2 className="text-center">Still have questions?</h2>
+                    <Link to="/book" target="_blank" className="text-center btn btn-purple fw-bold my-4" style={{width:'13%'}}>Contact Us!</Link>
+                </div>
             </div>
       </body>
     </>

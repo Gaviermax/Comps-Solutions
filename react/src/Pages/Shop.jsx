@@ -54,7 +54,7 @@ function Shop(){
             let showProduct = 
             `
             <div class="col card-deck">
-                        <div class="card bg-dark shadow text-light" data-aos="zoom-out-right">
+                        <div class="card bg-dark shadow text-light">
                             <Link><img src=${product.data().imageUrl} class="card-img-top img-fluid" alt="..."/></Link>
 
                             <div class="modal fade" id=${product.data().productName} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -101,7 +101,7 @@ function Shop(){
                                 <div class="text-end">
                                 
                                 <p class="text-urple fw-bold">$${product.data().productPrice}</p>
-                                <a to="#" class="btn outline-purple text-light px-2 me-2" style="border-color:#555FFF">♡</a>
+                                <a to="#" class="btn outline-purple text-light px-2 me-2" style="border-color:#178582">♡</a>
                                 <a class="btn btn-purple fw-bold px-2 btn-buy" id= ${product.id} onClick>Buy Now</a></div>
 
                             </div>
@@ -174,7 +174,7 @@ function Shop(){
 
     return(
 
-        <body className="bg-white" style={{minHeight:"100vh"}}>
+        <body className="bg-black" style={{minHeight:"100vh"}} >
             {/* add to cart modal */}
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">

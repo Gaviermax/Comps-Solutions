@@ -16,6 +16,11 @@
     color: #178582 !important;
     font-weight: bold;
 }
+#cart:hover{
+    color: #178582 !important;
+}
+
+
 
 
 .quality{
@@ -47,6 +52,12 @@
 
     background-repeat: no-repeat;
 }
+/* .teamImg{
+    background-image: url("../src/images/carlos.jpeg");
+
+    background-repeat: no-repeat;
+    border-radius: 50%;
+} */
 .rightQuality{
     background-image: url("../src/images/quality.webp");
     background-size:cover;
