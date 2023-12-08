@@ -18,7 +18,8 @@ const BookingDisplay = ({ bookings }) => {
 
       if (!bookingDoc.exists()) {
         // Show success alert after successful deletion
-        alert('Booking has been successfully deleted! Refresh the page to see changes.');
+        alert('Booking has been successfully deleted!');
+        window.location.reload();
       } else {
         // Show error alert if deletion fails
         alert('Error deleting booking. Please try again.');
